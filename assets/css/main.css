@@ -3162,8 +3162,8 @@ table.alt tbody tr td {
 
 .spotlight .image img {
 	display: block;
-	border-radius: 100%;
 	width: 16em;
+	height: 100%;
 }
 
 @media screen and (max-width: 980px) {
