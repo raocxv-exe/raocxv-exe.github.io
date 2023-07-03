@@ -3950,7 +3950,7 @@ body.is-preload #header.alt .logo {
 
 /* Text scroll */
 .roller {
-	font-size: 56px;
+	font-size: 36px;
 	height: 4.15rem;
 	line-height: 4rem;
 	position: relative;
@@ -4000,6 +4000,7 @@ body.is-preload #header.alt .logo {
 	.roller {
 		height: 2rem;
 		line-height: 2.125rem;
+		font-size: 16px;
 	}
 
 	.roller #rolltext {
@@ -4010,17 +4011,20 @@ body.is-preload #header.alt .logo {
 		0% {
 			top: 0;
 		}
-
+	
 		25% {
-			top: -2.125rem;
+			top: -2rem;
 		}
-
+	
 		50% {
-			top: -4.25rem;
+			top: -4rem;
 		}
-
+	
 		72.5% {
-			top: -6.375rem;
+			top: -6.25rem;
+		}
+		90.5% {
+			top: -8.25rem;
 		}
 	}
 }
