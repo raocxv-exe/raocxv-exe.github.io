@@ -21,7 +21,6 @@ h3,
 h4,
 h5,
 h6,
-p,
 blockquote,
 pre,
 a,
@@ -95,6 +94,10 @@ video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+}
+
+p {
+	justify-content: space-between;
 }
 
 article,
@@ -191,7 +194,7 @@ html {
 }
 
 body {
-	background-color: #5f4d93;
+	background-color: #14213D;
 	background-image: url("images/overlay.png"), -moz-linear-gradient(45deg, #14213D 15%, #000000 85%);
 	background-image: url("images/overlay.png"), -webkit-linear-gradient(45deg, #14213D 15%, #000000 85%);
 	background-image: url("images/overlay.png"), -ms-linear-gradient(45deg, #14213D 15%, #000000 85%);
@@ -2949,9 +2952,14 @@ table.alt tbody tr td {
 
 .features img {
 	display: block;
-	width: 100%;
+	width: 200px;
 	margin-bottom: 1em;
-	border-radius: 600px;
+	border-radius: 200px;
+}
+
+.features p {
+	color: grey;
+	justify-content: space-evenly;
 }
 
 .features li {
