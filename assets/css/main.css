@@ -2947,6 +2947,13 @@ table.alt tbody tr td {
 	list-style: none;
 }
 
+.features img {
+	display: block;
+	width: 100%;
+	margin-bottom: 1em;
+	border-radius: 600px;
+}
+
 .features li {
 	width: calc(33.33333% - 2em);
 	margin-left: 2em;
