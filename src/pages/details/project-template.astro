@@ -1,0 +1,326 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import Header from "../../components/Header.astro";
+import Sidebar from "../../components/Sidebar.astro";
+import FloatingControls from "../../components/FloatingControls.astro";
+
+import imgPlaceholder from "../../assets/projects/placeholder-big.png";
+
+// This is a template page for project details using the Bento Gallery.
+---
+
+<!doctype html>
+<html>
+  <Header title="Project Name | Project Details" />
+  <body>
+    <FloatingControls />
+    <div class="content">
+      <Sidebar selectedItem="proyectos" />
+      <nav class="main">
+        <div class="container">
+          <!-- Back Button -->
+          <div class="back-nav-container">
+            <a href="/proyectos" class="back-nav-button w-inline-block">
+              <Icon name="lucide:chevron-left" class="back-nav-img" />
+              <div data-i18n="details.back">Volver a Proyectos</div>
+            </a>
+          </div>
+
+          <div class="content-container" style="width: 100%;">
+            <!-- Header -->
+            <header class="project-header">
+              <h1 class="project-title" style="margin-bottom: 8px;">Nombre del Proyecto</h1>
+              <p class="lead" style="margin-bottom: 48px;">
+                Una breve descripción de una línea que resume el propósito principal del proyecto y el valor que aporta.
+              </p>
+            </header>
+
+            <!-- Bento Gallery Grid (Template) -->
+            <div class="bento-gallery">
+              <!-- Span 2 columns & rows for main impact -->
+              <div class="gallery-item" style="grid-column: span 2; grid-row: span 2;">
+                <Image src={imgPlaceholder} alt="Slide" class="gallery-img" loading="eager" />
+              </div>
+              
+              <div class="gallery-item" style="grid-column: span 1; grid-row: span 1;">
+                <Image src={imgPlaceholder} alt="Slide 2" class="gallery-img" loading="eager" style="filter: hue-rotate(45deg);" />
+              </div>
+              
+              <div class="gallery-item" style="grid-column: span 1; grid-row: span 1;">
+                <Image src={imgPlaceholder} alt="Slide 3" class="gallery-img" loading="eager" style="filter: hue-rotate(90deg);" />
+              </div>
+              
+              <div class="gallery-item" style="grid-column: span 1; grid-row: span 1;">
+                <Image src={imgPlaceholder} alt="Slide 4" class="gallery-img" loading="eager" style="filter: hue-rotate(135deg);" />
+              </div>
+
+              <!-- Spans 1 column but 2 rows height -->
+              <div class="gallery-item" style="grid-column: span 1; grid-row: span 2;">
+                <Image src={imgPlaceholder} alt="Slide 5" class="gallery-img" loading="eager" style="filter: hue-rotate(180deg);" />
+              </div>
+
+              <!-- Wide item -->
+              <div class="gallery-item" style="grid-column: span 3; grid-row: span 1;">
+                <Image src={imgPlaceholder} alt="Slide 6" class="gallery-img" loading="eager" style="filter: brightness(0.7);" />
+              </div>
+            </div>
+
+            <!-- Info Grid -->
+            <div class="info-grid">
+              <div class="info-card">
+                <div class="info-label">
+                  <Icon name="lucide:target" size={18} />
+                  <span data-i18n="details.asked">¿Qué se pidió?</span>
+                </div>
+                <p data-i18n="details.placeholder.asked">
+                  Descripción del requerimiento inicial del cliente o el problema que se buscaba resolver con este desarrollo.
+                </p>
+              </div>
+
+              <div class="info-card">
+                <div class="info-label">
+                  <Icon name="lucide:user" size={18} />
+                  <span data-i18n="details.done">¿Qué hice?</span>
+                </div>
+                <p data-i18n="details.placeholder.done">
+                  Detalles de mis responsabilidades, desde el diseño UI/UX hasta la implementación del backend o arquitectura.
+                </p>
+              </div>
+
+              <div class="info-card">
+                <div class="info-label">
+                  <Icon name="lucide:cpu" size={18} />
+                  <span data-i18n="details.tech">Tecnologías</span>
+                </div>
+                <div class="chips-container" style="margin-top: 12px;">
+                  <div class="single-chip small-chip" style="display: flex; align-items: center; gap: 6px;">
+                    <Icon name="lucide:rocket" size={12} />
+                    <span>Astro</span>
+                  </div>
+                  <div class="single-chip small-chip" style="display: flex; align-items: center; gap: 6px;">
+                    <Icon name="lucide:atom" size={12} />
+                    <span>React</span>
+                  </div>
+                  <div class="single-chip small-chip" style="display: flex; align-items: center; gap: 6px;">
+                    <Icon name="lucide:file-json" size={12} />
+                    <span>TypeScript</span>
+                  </div>
+                  <div class="single-chip small-chip" style="display: flex; align-items: center; gap: 6px;">
+                    <Icon name="lucide:server" size={12} />
+                    <span>Node.js</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Detailed Sections -->
+            <section class="details-section">
+              <div class="section-title" data-i18n="details.analysis">Análisis y Desarrollo</div>
+              <div class="project-desc">
+                <p data-i18n="details.placeholder.analysis">
+                  Aquí va una explicación más profunda del proceso. Cómo se abordó el problema, los desafíos técnicos encontrados y las decisiones de diseño tomadas durante el ciclo de vida del proyecto.
+                </p>
+              </div>
+            </section>
+
+            <section class="details-section">
+              <div class="section-title" data-i18n="details.results">Resultados y Aprendizaje</div>
+              <div class="project-desc">
+                <p data-i18n="details.placeholder.results">
+                  Impacto final del proyecto. Logros alcanzados, feedback del cliente o métricas de éxito (si aplican), y qué nuevos conocimientos se adquirieron tras finalizarlo.
+                </p>
+              </div>
+            </section>
+
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="image-modal" class="image-modal">
+      <span class="close-modal">&times;</span>
+      <img src="" alt="Zoomed view" class="image-modal-content" />
+    </div>
+
+    <!-- Page Interaction Scripts -->
+    <script is:inline>
+      document.addEventListener("astro:page-load", () => {
+        const modal = document.getElementById("image-modal");
+        const modalImg = modal?.querySelector(".image-modal-content");
+        const closeBtn = modal?.querySelector(".close-modal");
+        const galleryItems = document.querySelectorAll(".gallery-img");
+
+        if (!modal || !modalImg || !closeBtn) return;
+
+        galleryItems.forEach(item => {
+          item.addEventListener("click", () => {
+            modal.style.display = "flex";
+            document.body.classList.add("modal-open");
+            setTimeout(() => modal.classList.add("show"), 10);
+            modalImg.src = item.src;
+            modalImg.alt = item.alt;
+          });
+        });
+
+        const closeModal = () => {
+          modal.classList.remove("show");
+          document.body.classList.remove("modal-open");
+          setTimeout(() => (modal.style.display = "none"), 300);
+        };
+
+        closeBtn.addEventListener("click", closeModal);
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) closeModal();
+        });
+
+        const handleKeyDown = (e) => {
+          if (e.key === "Escape" && modal.classList.contains("show")) closeModal();
+        };
+        document.addEventListener("keydown", handleKeyDown);
+
+        document.addEventListener("astro:before-swap", () => {
+            document.removeEventListener("keydown", handleKeyDown);
+        }, { once: true });
+      });
+    </script>
+
+    <style>
+      .project-header {
+        text-align: center;
+        animation: fadeIn 0.8s ease-out;
+      }
+
+      .project-header .lead {
+        margin: 0 auto;
+        max-width: 800px;
+        color: #a8a8a8;
+      }
+
+      /* Bento Gallery Layout */
+      .bento-gallery {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: 140px;
+        gap: 16px;
+        margin-bottom: 64px;
+        animation: fadeIn 1s ease-out;
+      }
+
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        background: #0d0d0d;
+        border: 1px solid #353535;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+      }
+
+      .gallery-item:hover {
+        transform: scale(1.02);
+        border-color: #555;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        z-index: 2;
+      }
+
+      .gallery-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.6s ease;
+      }
+
+      .gallery-item:hover .gallery-img {
+        transform: scale(1.05);
+      }
+
+      /* Info Grid & Sections */
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+        margin-bottom: 64px;
+      }
+
+      .info-card {
+        background: rgba(43, 43, 43, 0.4);
+        border: 1px solid #353535;
+        border-radius: 12px;
+        padding: 24px;
+        transition: all 0.3s ease;
+      }
+
+      .info-label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #fff;
+        font-weight: bold;
+        font-size: 14px;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .info-card p, .project-desc p {
+        color: #a8a8a8;
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
+      .section-title {
+        font-size: 24px;
+        margin-bottom: 24px;
+        color: #fff;
+      }
+
+      /* Responsive Bento */
+      @media (max-width: 991px) {
+        .bento-gallery {
+          grid-template-columns: repeat(2, 1fr);
+          grid-auto-rows: 120px;
+        }
+        .gallery-item[style*="grid-column: span 3"] {
+            grid-column: span 2 !important;
+        }
+      }
+
+      @media (max-width: 500px) {
+        .bento-gallery {
+          grid-template-columns: 1fr;
+          grid-auto-rows: auto;
+        }
+        .gallery-item {
+            grid-column: span 1 !important;
+            grid-row: span 1 !important;
+            aspect-ratio: 16 / 9;
+        }
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      /* Light Mode Variations */
+      :global(html.light-mode) .gallery-item {
+        background: #f5f5f5;
+        border-color: #ddd;
+      }
+      :global(html.light-mode) .info-card {
+        background: #fff;
+        border-color: #eee;
+      }
+      :global(html.light-mode) .info-label, :global(html.light-mode) .section-title {
+        color: #111;
+      }
+      :global(html.light-mode) .info-card p, :global(html.light-mode) .project-desc p {
+        color: #666;
+      }
+    </style>
+  </body>
+</html>

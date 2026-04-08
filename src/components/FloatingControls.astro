@@ -1,0 +1,406 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<div class="floating-controls">
+  <!-- Language Switch -->
+  <div class="lang-switch-container">
+    <Icon
+      name="lucide:globe"
+      size={16}
+      class="control-icon"
+      aria-hidden="true"
+    />
+    <label class="lang-switch" for="lang-checkbox-floating">
+      <span class="sr-only">Cambiar idioma / Change Language</span>
+      <input
+        type="checkbox"
+        id="lang-checkbox-floating"
+        class="lang-checkbox"
+        aria-label="Toggle Language"
+      />
+      <div class="lang-slider">
+        <span class="lang-label en">EN</span>
+        <span class="lang-label es">ES</span>
+        <div class="lang-pill"></div>
+      </div>
+    </label>
+  </div>
+
+  <!-- Theme Toggle -->
+  <label class="theme-switch-container" for="theme-checkbox-floating">
+    <span class="sr-only">Cambiar modo de luz / Toggle Dark Mode</span>
+    <div class="icon-stack" aria-hidden="true">
+      <Icon name="lucide:sun" size={18} class="theme-icon sun-icon" />
+      <Icon name="lucide:moon" size={18} class="theme-icon moon-icon" />
+    </div>
+    <div class="theme-switch">
+      <input
+        type="checkbox"
+        id="theme-checkbox-floating"
+        class="theme-checkbox"
+        aria-label="Toggle Light Mode"
+      />
+      <div class="slider round"></div>
+    </div>
+  </label>
+</div>
+
+<script>
+  import { getLang, updateUI, toggleLang } from "../scripts/translate.js";
+
+  function initControls() {
+    // 1. Language Sync
+    const lang = getLang();
+    updateUI(lang);
+
+    const langChk = document.getElementById(
+      "lang-checkbox-floating",
+    ) as HTMLInputElement;
+    if (langChk) {
+      langChk.checked = lang === "es";
+    }
+
+    // 2. Theme Checkbox Sync (Core theme is handled early in Header.astro)
+    const isLightMode =
+      document.documentElement.classList.contains("light-mode");
+    document.querySelectorAll(".theme-checkbox").forEach((chk) => {
+      (chk as HTMLInputElement).checked = isLightMode;
+    });
+
+    // 4. Bind Events (Directly to this page's elements)
+    if (langChk) {
+      langChk.addEventListener("change", () => {
+        toggleLang();
+        // Since toggleLang is global and might be used elsewhere, we just ensure sync
+      });
+    }
+
+    const themeChk = document.getElementById(
+      "theme-checkbox-floating",
+    ) as HTMLInputElement;
+    if (themeChk) {
+      themeChk.addEventListener("change", (e) => {
+        const isLight = (e.target as HTMLInputElement).checked;
+        if (isLight) {
+          document.documentElement.classList.add("light-mode");
+          localStorage.setItem("theme", "light");
+        } else {
+          document.documentElement.classList.remove("light-mode");
+          localStorage.setItem("theme", "dark");
+        }
+
+        // Sync any other theme checkboxes
+        document.querySelectorAll(".theme-checkbox").forEach((c) => {
+          if (c !== e.target) (c as HTMLInputElement).checked = isLight;
+        });
+      });
+    }
+  }
+
+  let idleTimeout;
+  const hideControls = () => {
+    const controls = document.querySelector(".floating-controls");
+    if (controls) controls.classList.add("controls-idle");
+  };
+
+  const showControls = () => {
+    const controls = document.querySelector(".floating-controls");
+    if (controls) {
+      controls.classList.remove("controls-idle");
+      clearTimeout(idleTimeout);
+      // Reset the 3s timer
+      idleTimeout = setTimeout(hideControls, 3000);
+    }
+  };
+
+  // Bind to Astro lifecycle
+  document.addEventListener("astro:page-load", () => {
+    initControls();
+    
+    // Only enable auto-hide on mobile screens
+    if (window.innerWidth <= 991) {
+      showControls();
+      document.addEventListener("scroll", showControls);
+      document.addEventListener("touchstart", showControls);
+      document.addEventListener("click", showControls);
+    }
+  });
+</script>
+
+<style>
+  .floating-controls {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 18px;
+    background: #1c1c1c;
+    border: 1px solid #353535;
+    border-radius: 100px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Auto-hide logic for mobile */
+  @media screen and (max-width: 991px) {
+    .floating-controls.controls-idle {
+      opacity: 0.15;
+      pointer-events: none;
+    }
+  }
+
+  /* sr-only: standard class for screen readers only visibility */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  /* html.light-mode .floating-controls removed to keep it dark */
+
+  .lang-switch-container,
+  .theme-switch-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .theme-switch-container {
+    padding-left: 12px;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* html.light-mode .theme-switch-container divider color removed */
+
+  .control-icon,
+  .theme-icon {
+    color: #a8a8a8;
+    transition: all 0.3s ease;
+  }
+
+  /* html.light-mode icon color removal */
+
+  /* Language Switch Styling */
+  .lang-switch {
+    position: relative;
+    display: inline-block;
+    width: 64px;
+    height: 24px;
+    cursor: pointer;
+  }
+
+  .lang-checkbox {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+  }
+
+  .lang-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #353535;
+    transition: 0.4s;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 4px;
+  }
+
+  /* html.light-mode .lang-slider color removal */
+
+  .lang-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #a8a8a8;
+    z-index: 1;
+    transition: 0.3s;
+    user-select: none;
+  }
+
+  /* html.light-mode label color removal */
+
+  .lang-pill {
+    position: absolute;
+    height: 18px;
+    width: 28px;
+    left: 3px;
+    background-color: #fff;
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Active states for labels */
+  .lang-checkbox:not(:checked) ~ .lang-slider .lang-label.en {
+    color: #111;
+  }
+  .lang-checkbox:checked ~ .lang-slider .lang-label.es {
+    color: #111;
+  }
+
+  .lang-checkbox:checked ~ .lang-slider .lang-pill {
+    transform: translateX(30px);
+  }
+
+  /* Theme Switch Styling (Consistent with Lang) */
+  .theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+  }
+
+  .theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #353535;
+    transition: 0.4s;
+    border-radius: 22px;
+  }
+
+  /* slider color removal */
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    bottom: 2px;
+    background-color: #a8a8a8;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: #111;
+  }
+  /* slider checked color removal */
+
+  input:checked + .slider:before {
+    transform: translateX(18px);
+    background-color: #fff;
+  }
+
+  /* slider knob color removal */
+
+  .icon-stack {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .moon-icon {
+    display: none;
+  }
+  .sun-icon {
+    display: block;
+  }
+
+  html.light-mode .moon-icon {
+    display: block;
+    color: #fff;
+  }
+  html.light-mode .sun-icon {
+    display: none;
+  }
+
+  @media screen and (max-width: 991px) {
+    .floating-controls {
+      top: auto;
+      bottom: 24px;
+      left: 18px;
+      right: auto;
+      flex-direction: column-reverse;
+      padding: 18px 10px;
+      border-radius: 40px;
+      gap: 16px;
+      width: auto;
+      min-width: 44px;
+    }
+
+    .theme-switch-container {
+      border-left: none;
+      border-top: none;
+      padding-left: 0;
+      padding-top: 8px;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .lang-switch-container {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* Vertical Language Switch */
+    .lang-switch {
+      width: 24px;
+      height: 48px;
+    }
+
+    .lang-slider {
+      flex-direction: column;
+      padding: 3px 0;
+    }
+
+    .lang-pill {
+      width: 18px;
+      height: 18px;
+      left: 3px;
+      top: 3px;
+      transform: translateY(0);
+    }
+
+    .lang-checkbox:checked ~ .lang-slider .lang-pill {
+      transform: translateY(24px); /* Move down for ES */
+    }
+
+    /* Vertical Theme Switch */
+    .theme-switch {
+      width: 24px;
+      height: 48px;
+    }
+
+    .slider:before {
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 27px; /* Start at top */
+    }
+
+    input:checked + .slider:before {
+      transform: translateY(24px); /* Move down for Light */
+    }
+
+    /* mobile divider revert */
+  }
+</style>

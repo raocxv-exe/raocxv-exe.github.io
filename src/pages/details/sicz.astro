@@ -1,0 +1,481 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import Header from "../../components/Header.astro";
+import Sidebar from "../../components/Sidebar.astro";
+import FloatingControls from "../../components/FloatingControls.astro";
+import imgSicz from "../../assets/projects/sicz/sicz.png";
+import imgLogin from "../../assets/projects/sicz/login.png";
+import imgHome1 from "../../assets/projects/sicz/home1.png";
+import imgList from "../../assets/projects/sicz/creadores_listado.png";
+import imgGeo from "../../assets/projects/sicz/creadores_geo.png";
+import imgDetail from "../../assets/projects/sicz/museos_detail.png";
+import imgForm from "../../assets/projects/sicz/creadores_form.png";
+import imgForm2 from "../../assets/projects/sicz/casas_form1.png";
+import imgHome2 from "../../assets/projects/sicz/home2.png";
+
+// SICZ Project Details Page - Bento Gallery Version
+---
+
+<!doctype html>
+<html>
+  <Header title="SICZ | Project Details" />
+  <body>
+    <FloatingControls />
+    <div class="content">
+      <Sidebar selectedItem="proyectos" />
+      <nav class="main">
+        <div class="container">
+          <!-- Back Button -->
+          <div class="back-nav-container">
+            <a href="/proyectos" class="back-nav-button w-inline-block">
+              <Icon name="lucide:chevron-left" class="back-nav-img" />
+              <div data-i18n="details.back">Volver a Proyectos</div>
+            </a>
+          </div>
+
+          <div class="content-container" style="width: 100%;">
+            <!-- Header -->
+            <header class="project-header">
+              <h1
+                class="project-title"
+                style="margin-bottom: 8px;"
+                data-i18n="details.sicz.title"
+              >
+                SICZ - Instituto Zacatecano de Cultura
+              </h1>
+              <p
+                class="lead"
+                style="margin-bottom: 48px;"
+                data-i18n="details.sicz.lead"
+              >
+                Sistema enfocado en la preservación, actualización y
+                modernización de datos culturales del estado de Zacatecas.
+              </p>
+            </header>
+
+            <!-- Bento Gallery Grid -->
+            <div class="bento-gallery">
+              <!-- Item 1: Main View (Large) -->
+              <div
+                class="gallery-item"
+                style="grid-column: span 2; grid-row: span 2;"
+              >
+                <Image
+                  src={imgSicz}
+                  alt="SICZ Interface"
+                  class="gallery-img"
+                  loading="eager"
+                />
+              </div>
+
+              <!-- Item 2: Login (Square) -->
+              <div
+                class="gallery-item"
+                style="grid-column: span 1; grid-row: span 1;"
+              >
+                <Image
+                  src={imgLogin}
+                  alt="Login Interface"
+                  class="gallery-img"
+                  loading="eager"
+                />
+              </div>
+
+              <!-- Item 3: Dashboard (Square) -->
+              <div
+                class="gallery-item"
+                style="grid-column: span 1; grid-row: span 1;"
+              >
+                <Image
+                  src={imgHome1}
+                  alt="Dashboard"
+                  class="gallery-img"
+                  loading="eager"
+                />
+              </div>
+
+              <!-- Item 4: List View (Square) -->
+              <div
+                class="gallery-item"
+                style="grid-column: span 1; grid-row: span 1;"
+              >
+                <Image
+                  src={imgList}
+                  alt="List View"
+                  class="gallery-img"
+                  loading="eager"
+                />
+              </div>
+
+              <!-- Item 5: Geographic View (Vertical Tall) -->
+              <div
+                class="gallery-item"
+                style="grid-column: span 1; grid-row: span 2;"
+              >
+                <Image
+                  src={imgGeo}
+                  alt="Geographic View"
+                  class="gallery-img"
+                  loading="eager"
+                />
+              </div>
+
+              <!-- Item 6: Museum Detail (Wide Rectangular) -->
+              <div
+                class="gallery-item"
+                style="grid-column: span 3; grid-row: span 1;"
+              >
+                <Image
+                  src={imgDetail}
+                  alt="Museum Detail"
+                  class="gallery-img"
+                  loading="eager"
+                />
+              </div>
+
+              <!-- Item 7: Creator Form (Square) -->
+              <div
+                class="gallery-item"
+                style="grid-column: span 1; grid-row: span 1;"
+              >
+                <Image
+                  src={imgForm}
+                  alt="Creator Form"
+                  class="gallery-img"
+                  loading="eager"
+                />
+              </div>
+
+              <!-- Item 8: Form Section (Wide) -->
+              <div
+                class="gallery-item"
+                style="grid-column: span 2; grid-row: span 1;"
+              >
+                <Image
+                  src={imgForm2}
+                  alt="Form Section"
+                  class="gallery-img"
+                  loading="eager"
+                />
+              </div>
+
+              <!-- Item 9: Secondary Home (Square) -->
+              <div
+                class="gallery-item"
+                style="grid-column: span 1; grid-row: span 1;"
+              >
+                <Image
+                  src={imgHome2}
+                  alt="Secondary View"
+                  class="gallery-img"
+                  loading="eager"
+                />
+              </div>
+            </div>
+
+            <!-- Info Grid -->
+            <div class="info-grid">
+              <div class="info-card">
+                <div class="info-label">
+                  <Icon name="lucide:target" size={18} />
+                  <span data-i18n="details.asked">¿Qué se pidió?</span>
+                </div>
+                <p data-i18n="details.sicz.asked">
+                  Se solicitó un sistema para el Instituto Zacatecano de Cultura
+                  (IZC) que permitiera digitalizar y centralizar la información
+                  cultural del estado, con un diseño extremadamente minimalista
+                  para usuarios con poca experiencia técnica y hardware
+                  limitado.
+                </p>
+              </div>
+
+              <div class="info-card">
+                <div class="info-label">
+                  <Icon name="lucide:user" size={18} />
+                  <span data-i18n="details.done">¿Qué hice?</span>
+                </div>
+                <p data-i18n="details.sicz.done">
+                  Diseñador de Producto y Desarrollador. Implementé una interfaz
+                  minimalista basada en Bootstrap, optimizada para equipos de
+                  bajos recursos. Desarrollé el backend con Django para una
+                  gestión de datos eficiente y segura.
+                </p>
+              </div>
+
+              <div class="info-card">
+                <div class="info-label">
+                  <Icon name="lucide:cpu" size={18} />
+                  <span>Tecnologías</span>
+                </div>
+                <div class="chips-container" style="margin-top: 12px;">
+                  <div
+                    class="single-chip small-chip"
+                    style="display: flex; align-items: center; gap: 6px;"
+                  >
+                    <Icon name="lucide:server" size={12} />
+                    <span>Django</span>
+                  </div>
+                  <div
+                    class="single-chip small-chip"
+                    style="display: flex; align-items: center; gap: 6px;"
+                  >
+                    <Icon name="lucide:layout" size={12} />
+                    <span>Bootstrap</span>
+                  </div>
+                  <div
+                    class="single-chip small-chip"
+                    style="display: flex; align-items: center; gap: 6px;"
+                  >
+                    <Icon name="lucide:code-2" size={12} />
+                    <span>Python</span>
+                  </div>
+                  <div
+                    class="single-chip small-chip"
+                    style="display: flex; align-items: center; gap: 6px;"
+                  >
+                    <Icon name="lucide:file-code" size={12} />
+                    <span>HTML/CSS</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Detailed Sections -->
+            <section class="details-section">
+              <div class="section-title" data-i18n="details.analysis">
+                Análisis y Desarrollo
+              </div>
+              <div class="project-desc">
+                <p data-i18n="details.sicz.analysis.p1">
+                  El principal desafío fue equilibrar la modernización funcional
+                  con las restricciones de hardware. Al ser una dependencia
+                  gubernamental, el diseño debía alinearse con la identidad
+                  institucional, resultando en una estética sobria y directa.
+                </p>
+                <p data-i18n="details.sicz.analysis.p2">
+                  Dada la demografía de los usuarios internos (mayores de 40
+                  años), cada decisión de diseño buscó la simplicidad radical.
+                  Eliminamos animaciones y elementos pesados para garantizar que
+                  el sistema corriera fluido en cualquier terminal de la
+                  oficina.
+                </p>
+              </div>
+            </section>
+
+            <section class="details-section">
+              <div class="section-title" data-i18n="details.results">
+                Resultados y Aprendizaje
+              </div>
+              <div class="project-desc">
+                <p data-i18n="details.sicz.results.p1">
+                  El sistema resolvió eficazmente la falta de acceso
+                  centralizado a la información cultural del estado de
+                  Zacatecas. Los clientes quedaron sumamente satisfechos con la
+                  facilidad de uso del inventario y la rapidez de respuesta del
+                  software en sus equipos actuales.
+                </p>
+                <p data-i18n="details.sicz.results.p2">
+                  Este proyecto reforzó mi capacidad para diseñar bajo
+                  restricciones técnicas estrictas, demostrando que la
+                  accesibilidad y el rendimiento son pilares fundamentales de
+                  una buena ingeniería de software.
+                </p>
+              </div>
+            </section>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="image-modal" class="image-modal">
+      <span class="close-modal">&times;</span>
+      <img src="" alt="Zoomed view" class="image-modal-content" />
+    </div>
+
+    <!-- Page Interaction Scripts -->
+    <script is:inline>
+      document.addEventListener("astro:page-load", () => {
+        const modal = document.getElementById("image-modal");
+        const modalImg = modal?.querySelector(".image-modal-content");
+        const closeBtn = modal?.querySelector(".close-modal");
+        const galleryItems = document.querySelectorAll(".gallery-img");
+
+        if (!modal || !modalImg || !closeBtn) return;
+
+        galleryItems.forEach((item) => {
+          item.addEventListener("click", () => {
+            modal.style.display = "flex";
+            document.body.classList.add("modal-open");
+            setTimeout(() => modal.classList.add("show"), 10);
+            modalImg.src = item.src;
+            modalImg.alt = item.alt;
+          });
+        });
+
+        const closeModal = () => {
+          modal.classList.remove("show");
+          document.body.classList.remove("modal-open");
+          setTimeout(() => (modal.style.display = "none"), 300);
+        };
+
+        closeBtn.addEventListener("click", closeModal);
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) closeModal();
+        });
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && modal.classList.contains("show"))
+            closeModal();
+        });
+      });
+    </script>
+
+    <style>
+      .project-header {
+        text-align: center;
+        animation: fadeIn 0.8s ease-out;
+      }
+
+      .project-header .lead {
+        margin: 0 auto;
+        max-width: 800px;
+        color: #a8a8a8;
+      }
+
+      /* Bento Gallery Layout */
+      .bento-gallery {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: 140px;
+        gap: 16px;
+        margin-bottom: 64px;
+        animation: fadeIn 1s ease-out;
+      }
+
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        background: #0d0d0d;
+        border: 1px solid #353535;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+      }
+
+      .gallery-item:hover {
+        transform: scale(1.02);
+        border-color: #555;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        z-index: 2;
+      }
+
+      .gallery-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.6s ease;
+      }
+
+      .gallery-item:hover .gallery-img {
+        transform: scale(1.05);
+      }
+
+      /* Info Grid & Sections */
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+        margin-bottom: 64px;
+      }
+
+      .info-card {
+        background: rgba(43, 43, 43, 0.4);
+        border: 1px solid #353535;
+        border-radius: 12px;
+        padding: 24px;
+        transition: all 0.3s ease;
+      }
+
+      .info-label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #fff;
+        font-weight: bold;
+        font-size: 14px;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .info-card p,
+      .project-desc p {
+        color: #a8a8a8;
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
+      .section-title {
+        font-size: 24px;
+        margin-bottom: 24px;
+        color: #fff;
+      }
+
+      /* Responsive Bento */
+      @media (max-width: 991px) {
+        .bento-gallery {
+          grid-template-columns: repeat(2, 1fr);
+          grid-auto-rows: 120px;
+        }
+        .gallery-item[style*="grid-column: span 3"] {
+          grid-column: span 2 !important;
+        }
+      }
+
+      @media (max-width: 500px) {
+        .bento-gallery {
+          grid-template-columns: 1fr;
+          grid-auto-rows: auto;
+        }
+        .gallery-item {
+          grid-column: span 1 !important;
+          grid-row: span 1 !important;
+          aspect-ratio: 16 / 9;
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Light Mode Variations */
+      :global(html.light-mode) .gallery-item {
+        background: #f5f5f5;
+        border-color: #ddd;
+      }
+      :global(html.light-mode) .info-card {
+        background: #fff;
+        border-color: #eee;
+      }
+      :global(html.light-mode) .info-label,
+      :global(html.light-mode) .section-title {
+        color: #111;
+      }
+      :global(html.light-mode) .info-card p,
+      :global(html.light-mode) .project-desc p {
+        color: #666;
+      }
+    </style>
+  </body>
+</html>

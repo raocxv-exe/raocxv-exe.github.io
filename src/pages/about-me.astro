@@ -1,0 +1,238 @@
+---
+import { Icon } from "astro-icon/components";
+import Header from "../components/Header.astro";
+import Sidebar from "../components/Sidebar.astro";
+import FloatingControls from "../components/FloatingControls.astro";
+---
+
+<!doctype html>
+<html>
+  <Header title="About me | Rolando Aguilar Ordaz" />
+  <body>
+    <FloatingControls />
+    <div class="content">
+      <Sidebar selectedItem="about-me" />
+      <nav class="main" style="padding-left: 0; padding-right: 0;">
+        <div class="container" style="max-width: 100%; width: 100%;">
+          <div class="back-nav-container" style="margin-left: 48px;">
+            <a href="/" class="back-nav-button w-inline-block">
+              <Icon name="lucide:chevron-left" class="back-nav-img" />
+              <div data-i18n="nav.back">Back</div>
+            </a>
+          </div>
+
+          <div
+            class="content-container"
+            style="padding: 0 48px; margin-bottom: 80px; width: 100%; max-width: 1200px; margin-left: auto; margin-right: auto;"
+          >
+            <div class="section-title" style="margin-bottom: 32px;" data-i18n="about.title">
+              About Me
+            </div>
+
+            <div class="bento-grid">
+              <!-- Box One -->
+              <div class="bento-box bento-bio">
+                <h2 class="bento-title">
+                  <Icon name="lucide:user" class="bento-icon" />
+                  <span data-i18n="about.bio.title">Sobre mí</span>
+                </h2>
+                <div class="bento-text">
+                  <p data-i18n="about.bio.p1">
+                    Soy un Ingeniero de Software e Investigador de UI/UX con una
+                    inmensa pasión por construir productos que fusionan una
+                    logística impecable de código con interacciones humanas
+                    bellas y empáticas.
+                  </p>
+                  <p data-i18n="about.bio.p2">
+                    A lo largo de los años, he estado transitando constantemente
+                    entre el frontend más pulido y la arquitectura backend.
+                    Disfruto desarmar problemas complejos y ensamblar soluciones
+                    dinámicas para usuarios reales.
+                  </p>
+                  <p>
+                    <strong data-i18n="about.bio.q">¿Qué planeo hacer?</strong><br />
+                    <span data-i18n="about.bio.ans">
+                    Mi objetivo a futuro es liderar la convergencia entre Ingeniería
+                    e IA aplicada a experiencias de usuario, diseñando herramientas
+                    que parezcan sacadas de la ciencia ficción, pero orientadas firmemente
+                    a solucionar frustraciones laborales comunes.
+                    </span>
+                  </p>
+                </div>
+              </div>
+
+              <!-- Box New: CV -->
+              <div class="bento-box bento-cv">
+                <h3 class="bento-title">
+                  <Icon name="lucide:file-text" class="bento-icon" />
+                  <span data-i18n="nav.cv">Resume</span>
+                </h3>
+                <a href="/assets/cv_rolandoaguilarordaz.pdf" target="_blank" class="bento-link" style="width: 100%;" download="CV_Rolando_Aguilar_Ordaz.pdf">
+                  <Icon name="lucide:download" size={18} />
+                  <span data-i18n="nav.cv">Download</span>
+                </a>
+              </div>
+
+              <!-- Box Two: Links -->
+              <div class="bento-box bento-contact">
+                <div style="display: flex; flex-direction: column; gap: 8px; width: 100%;">
+                  <a href="https://www.linkedin.com/in/rolandoaordaz" target="_blank" class="bento-link" style="padding: 12px;">
+                    <Icon name="lucide:linkedin" size={18} />
+                    <span style="font-size: 14px;">LinkedIn</span>
+                  </a>
+                  <a href="https://github.com/raocxv-exe" target="_blank" class="bento-link" style="padding: 12px;">
+                    <Icon name="lucide:github" size={18} />
+                    <span style="font-size: 14px;">GitHub</span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Box Three -->
+              <div class="bento-box bento-skills">
+                <h3 class="bento-title">
+                  <Icon name="lucide:cpu" class="bento-icon" />
+                  <span data-i18n="about.skills.title">Tech & Skills Stack</span>
+                </h3>
+                <div
+                  class="chips-container"
+                  style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px;"
+                >
+                  <!-- Programming Languages -->
+                  <div class="single-chip small-skill" title="Programming Language">
+                    <Icon name="lucide:code-2" size={14} /> Python
+                  </div>
+                  <div class="single-chip small-skill">
+                    <Icon name="lucide:smartphone" size={14} /> Dart (Flutter)
+                  </div>
+                  <div class="single-chip small-skill">
+                    <Icon name="lucide:terminal" size={14} /> JavaScript
+                  </div>
+                  <div class="single-chip small-skill">
+                    <Icon name="lucide:coffee" size={14} /> Java
+                  </div>
+                  <div class="single-chip small-skill">
+                    <Icon name="lucide:binary" size={14} /> C / C++
+                  </div>
+
+                  <!-- Frameworks & Tools -->
+                  <div class="single-chip small-skill">
+                    <Icon name="lucide:globe" size={14} /> Django
+                  </div>
+                  <div class="single-chip small-skill">
+                    <Icon name="lucide:container" size={14} /> Docker
+                  </div>
+                  <div class="single-chip small-skill">
+                    <Icon name="lucide:layout" size={14} /> Bootstrap
+                  </div>
+                  <div class="single-chip small-skill">
+                    <Icon name="lucide:git-branch" size={14} /> Git / GitHub
+                  </div>
+
+                  <!-- Technologies -->
+                  <div class="single-chip small-skill">
+                    <Icon name="lucide:database" size={14} /> SQL
+                  </div>
+                  <div class="single-chip small-skill">
+                    <Icon name="lucide:flame" size={14} /> Firebase
+                  </div>
+                  <div class="single-chip small-skill">
+                    <Icon name="lucide:bar-chart-3" size={14} /> Power BI / R
+                  </div>
+                  <div class="single-chip small-skill">
+                    <Icon name="lucide:monitor" size={14} /> Linux
+                  </div>
+                  <div class="single-chip small-skill">
+                     <Icon name="lucide:grid-2x2" size={14} /> Office 365
+                  </div>
+
+                  <!-- Other Skills -->
+                  <div class="single-chip small-skill">
+                    <Icon name="lucide:palette" size={14} /> UI/UX Design
+                  </div>
+                  <div class="single-chip small-skill">
+                    <Icon name="lucide:zap" size={14} /> Agile (Scrum)
+                  </div>
+                  <div class="single-chip small-skill">
+                    <Icon name="lucide:shield-check" size={14} /> ISO 29110
+                  </div>
+                  <div class="single-chip small-skill">
+                    <Icon name="lucide:server-cog" size={14} /> DB Management
+                  </div>
+                  <div class="single-chip small-skill">
+                    <Icon name="lucide:lightbulb" size={14} /> Design Thinking
+                  </div>
+                  <div class="single-chip small-skill">
+                    <Icon name="lucide:search" size={14} /> User Research
+                  </div>
+                  <div class="single-chip small-skill">
+                    <Icon name="lucide:file-text" size={14} /> Documentation
+                  </div>
+                </div>
+
+                <style>
+                  .small-skill {
+                    font-size: 13px !important;
+                    padding: 6px 12px !important;
+                    gap: 6px !important;
+                  }
+                </style>
+              </div>
+
+              <!-- Box Four -->
+              <div class="bento-box bento-fun-facts">
+                <h3 class="bento-title">
+                  <Icon name="lucide:sparkles" class="bento-icon" />
+                  <span data-i18n="about.fun.title">Fun Facts</span>
+                </h3>
+                <ul
+                  class="bento-text"
+                  style="padding-left: 20px; display: flex; flex-direction: column; gap: 8px;"
+                >
+                  <li data-i18n="about.fun.1">He resuelto un cubo Rubik en menos de 1 minuto 🏃‍♂️</li>
+                  <li data-i18n="about.fun.2">
+                    Prefiero coleccionar teclados mecánicos antes que zapatos ⌨️
+                  </li>
+                  <li data-i18n="about.fun.3">
+                    Inicié en la programación creando mods para videojuegos
+                    clásicos 👾
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Box Five -->
+              <div class="bento-box bento-tastes">
+                <h3 class="bento-title">
+                  <Icon name="lucide:palette" class="bento-icon" />
+                  <span data-i18n="about.hobbies.title">Hobbies</span>
+                </h3>
+                <div
+                  class="bento-text"
+                  style="display: flex; flex-direction: column; gap: 8px;"
+                >
+                  <span data-i18n="about.hobbies.1">🎧 Música Synthwave</span>
+                  <span data-i18n="about.hobbies.2">📚 Novelas Sci-Fi</span>
+                  <span data-i18n="about.hobbies.3">🎨 Arte Pixel</span>
+                  <span data-i18n="about.hobbies.4">☕ Cientos de cafés</span>
+                </div>
+              </div>
+
+              <!-- Box Six -->
+              <div class="bento-box bento-education">
+                <h3 class="bento-title">
+                  <Icon name="lucide:graduation-cap" class="bento-icon" />
+                  <span data-i18n="about.edu.title">Education</span>
+                </h3>
+                <div class="bento-text">
+                  <p><strong data-i18n="about.edu.degree">B.S. in Software Engineering</strong></p>
+                  <p data-i18n="about.edu.uni">Universidad Autónoma de Zacatecas "Francisco García Salinas"</p>
+                  <p style="opacity: 0.6; font-size: 14px;" data-i18n="about.edu.date">December 2023</p>
+                </div>
+              </div>
+            </div>
+            <!-- bento-grid wrap end -->
+          </div>
+        </div>
+      </nav>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,261 @@
+---
+import { Icon } from "astro-icon/components";
+import Header from "../../components/Header.astro";
+import Sidebar from "../../components/Sidebar.astro";
+import FloatingControls from "../../components/FloatingControls.astro";
+
+// Devii - Project Details
+---
+
+<!doctype html>
+<html>
+  <Header title="Devii | Project Details" />
+  <body>
+    <FloatingControls />
+    <div class="content">
+      <Sidebar selectedItem="proyectos" />
+      <nav class="main">
+        <div class="container">
+          <!-- Back Button -->
+          <div class="back-nav-container">
+            <a href="/proyectos" class="back-nav-button w-inline-block">
+              <Icon name="lucide:chevron-left" class="back-nav-img" />
+              <div data-i18n="details.back">Volver a Proyectos</div>
+            </a>
+          </div>
+
+          <div class="content-container" style="width: 100%;">
+            <!-- Header -->
+            <header class="project-header">
+              <h1 class="project-title" style="margin-bottom: 8px;" data-i18n="details.devii.title">Devii - Mobile App</h1>
+              <p class="lead" style="margin-bottom: 48px;" data-i18n="details.devii.lead">
+                Mobile journaling and gamification app designed to support individuals with eating disorders.
+              </p>
+            </header>
+
+            <section class="details-section personal-note" style="margin-bottom: 48px; padding: 32px; background: rgba(255, 255, 255, 0.03); border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);">
+              <div class="section-title" style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px;">
+                <Icon name="lucide:heart" style="color: #ff4b4b;" />
+                <span data-i18n="details.devii.connection.title">Un Caso de Estudio en Empatía</span>
+              </div>
+              <div class="project-desc">
+                <p data-i18n="details.devii.connection.p1" style="margin-bottom: 16px; font-style: italic; color: #fff;">
+                  Devii is more than just a technical project; it is a deeply personal piece of work.
+                </p>
+                <p data-i18n="details.devii.connection.p2" style="margin-bottom: 16px;">
+                  I discovered that gamification can be a powerful tool in mental health.
+                </p>
+                <p data-i18n="details.devii.connection.p3">
+                  This emotional connection was so strong that it led me to turn this project into my university thesis.
+                </p>
+              </div>
+            </section>
+
+            <!-- Construction Placeholder (Since there are no images) -->
+            <div class="construction-placeholder">
+              <Icon name="lucide:hard-hat" size={64} style="opacity: 0.8;" />
+              <div class="placeholder-text">
+                <h2 data-i18n="details.construction.title">Under Construction</h2>
+                <p data-i18n="details.construction.desc">Not ready to show yet</p>
+              </div>
+            </div>
+
+            <!-- Info Grid -->
+            <div class="info-grid">
+              <div class="info-card">
+                <div class="info-label">
+                  <Icon name="lucide:target" size={18} />
+                  <span data-i18n="details.asked">¿Qué se pidió?</span>
+                </div>
+                <p data-i18n="details.devii.asked">
+                  A creative solution was requested as part of a Software Engineering course (ISO 29110) to solve a real-world problem.
+                </p>
+              </div>
+
+              <div class="info-card">
+                <div class="info-label">
+                  <Icon name="lucide:user" size={18} />
+                  <span data-i18n="details.done">¿Qué hice?</span>
+                </div>
+                <p data-i18n="details.devii.done">
+                  Product Designer and Developer. I ideated the concept from scratch, conducted user research, and developed the app using Flutter.
+                </p>
+              </div>
+
+              <div class="info-card">
+                <div class="info-label">
+                  <Icon name="lucide:cpu" size={18} />
+                  <span data-i18n="details.tech">Tecnologías</span>
+                </div>
+                <div class="chips-container" style="margin-top: 12px;">
+                  <div class="single-chip small-chip" style="display: flex; align-items: center; gap: 6px;">
+                    <Icon name="lucide:smartphone" size={12} />
+                    <span>Flutter</span>
+                  </div>
+                  <div class="single-chip small-chip" style="display: flex; align-items: center; gap: 6px;">
+                    <Icon name="lucide:flame" size={12} />
+                    <span>Firebase</span>
+                  </div>
+                  <div class="single-chip small-chip" style="display: flex; align-items: center; gap: 6px;">
+                    <Icon name="lucide:code" size={12} />
+                    <span>Dart</span>
+                  </div>
+                  <div class="single-chip small-chip" style="display: flex; align-items: center; gap: 6px;">
+                    <Icon name="lucide:check-circle" size={12} />
+                    <span>ISO 29110</span>
+                  </div>
+                  <div class="single-chip small-chip" style="display: flex; align-items: center; gap: 6px;">
+                    <Icon name="lucide:layout" size={12} />
+                    <span>Material Design</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Detailed Sections -->
+            <section class="details-section">
+              <div class="section-title" data-i18n="details.analysis">Análisis y Desarrollo</div>
+              <div class="project-desc">
+                <p data-i18n="details.devii.analysis.p1" style="margin-bottom: 16px;">
+                  The design was inspired by Tamagotchis, where the user cares for a virtual pet. By recording meals and feelings (Journaling), the user not only maintains records for their specialist but also interacts with their pet.
+                </p>
+                <p data-i18n="details.devii.analysis.p2">
+                  It was crucial to ensure a 'trigger-free' design. I worked with guidance from a psychologist to validate that visual elements and language did not reinforce negative behaviors.
+                </p>
+              </div>
+            </section>
+
+            <section class="details-section">
+              <div class="section-title" data-i18n="details.results">Resultados y Aprendizaje</div>
+              <div class="project-desc">
+                <p data-i18n="details.devii.results.p1" style="margin-bottom: 16px;">
+                  The project went through multiple iterations (3 sprints) until reaching a visual style that blends Material Design with unique personal touches.
+                </p>
+                <p data-i18n="details.devii.results.p2">
+                  While still in development, the functional prototype demonstrated that gamification can significantly improve user retention in long-term therapies.
+                </p>
+              </div>
+            </section>
+
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <style>
+      .project-header {
+        text-align: center;
+        animation: fadeIn 0.8s ease-out;
+      }
+
+      .project-header .lead {
+        margin: 0 auto;
+        max-width: 800px;
+        color: #a8a8a8;
+      }
+
+      .construction-placeholder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.03);
+        border: 2px dashed #353535;
+        border-radius: 20px;
+        padding: 64px 32px;
+        margin-bottom: 64px;
+        text-align: center;
+        gap: 24px;
+        animation: fadeIn 1s ease-out;
+      }
+
+      .placeholder-text h2 {
+        font-size: 28px;
+        color: #fff;
+        margin-bottom: 8px;
+        font-weight: 600;
+      }
+
+      .placeholder-text p {
+        font-size: 18px;
+        color: #a8a8a8;
+      }
+
+      /* Info Grid & Sections */
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+        margin-bottom: 64px;
+      }
+
+      .info-card {
+        background: rgba(43, 43, 43, 0.4);
+        border: 1px solid #353535;
+        border-radius: 12px;
+        padding: 24px;
+        transition: all 0.3s ease;
+      }
+
+      .info-label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #fff;
+        font-weight: bold;
+        font-size: 14px;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .info-card p, .project-desc p {
+        color: #a8a8a8;
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
+      .section-title {
+        font-size: 24px;
+        margin-bottom: 24px;
+        color: #fff;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      /* Light Mode Variations */
+      :global(html.light-mode) .info-card {
+        background: #fff;
+        border-color: #eee;
+      }
+      :global(html.light-mode) .info-label, :global(html.light-mode) .section-title {
+        color: #111;
+      }
+      :global(html.light-mode) .info-card p, :global(html.light-mode) .project-desc p {
+        color: #666;
+      }
+
+      :global(html.light-mode) .construction-placeholder {
+        background: #fdfdfd;
+        border-color: #ddd;
+      }
+      :global(html.light-mode) .placeholder-text h2 {
+        color: #111;
+      }
+      :global(html.light-mode) .placeholder-text p {
+        color: #666;
+      }
+
+      :global(html.light-mode) .personal-note {
+        background: rgba(0, 0, 0, 0.03) !important;
+        border-color: #eee !important;
+      }
+      :global(html.light-mode) .personal-note p[style*="color: #fff"] {
+        color: #111 !important;
+      }
+    </style>
+  </body>
+</html>

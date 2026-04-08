@@ -1,0 +1,388 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import Header from "../components/Header.astro";
+import Project from "../components/Project.astro";
+import Sidebar from "../components/Sidebar.astro";
+import FloatingControls from "../components/FloatingControls.astro";
+import placeholderBig from "../assets/projects/placeholder-big.png";
+
+import siczImg from "../assets/projects/sicz/sicz.png";
+
+const projects = [
+  {
+    key: "projects.archive.satca",
+    title: "SATCA UAZ",
+    desc: [
+      "Created a management system for university departments to maintain academic offerings and course credits.",
+      "Visualizes academic data by career and supports curriculum tracking.",
+      "Implemented as a CRUD web system using Django and Docker.",
+    ],
+    tech: ["Django", "Docker", "Bootstrap", "JavaScript", "HTML/CSS"],
+  },
+  {
+    key: "projects.archive.createhammer",
+    title: "Create: Easier Sheets",
+    desc: [
+      "Minecraft mod developed for NeoForge 1.21.1 that integrates with the 'Create' mod ecosystem.",
+      "Introduces the 'Sturdy Hammer' tool to manually press ingots into sheets on a Depot.",
+      "Provides an early-game alternative for sheet production without requiring initial kinetic energy setups.",
+    ],
+    tech: ["Java", "NeoForge", "Gradle"],
+  },
+];
+---
+
+<!doctype html>
+<html>
+  <Header title="Projects | Rolando Aguilar Ordaz" />
+  <body>
+    <FloatingControls />
+    <div class="content">
+      <Sidebar selectedItem="proyectos" />
+      <nav class="main">
+        <div class="container">
+          <div class="back-nav-container">
+            <a href="/" class="back-nav-button w-inline-block"
+              ><Icon name="lucide:chevron-left" class="back-nav-img" />
+              <div data-i18n="nav.back">Back</div></a
+            >
+          </div>
+          <div class="content-container" style="width: 100%;">
+            <!-- Carousel Section One (Real Projects) -->
+            <div style="margin-bottom: 32px;">
+              <div
+                class="section-title"
+                style="margin-bottom: 8px;"
+                data-i18n="projects.real.title"
+              >
+                Highlighted Real Projects
+              </div>
+              <p
+                class="lead"
+                style="margin-bottom: 24px; font-size: 16px;"
+                data-i18n="projects.real.intro"
+              >
+                Aplicaciones y plataformas reales que he programado. Estas son
+                soluciones completamente funcionales, con código
+                backend/frontend y desplegadas en producción.
+              </p>
+              <div class="carousel-wrapper">
+                <button class="carousel-btn prev" id="highlight-prev"
+                  >&lt;</button
+                >
+                <div class="carousel-container" style="width: 100%;">
+                  <div class="carousel-track" id="highlight-track">
+                    <!-- Card 1: Devii -->
+                    <div class="card">
+                      <div
+                        class="card-image-container"
+                        style="height: 140px; min-height: 140px; background: transparent; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;"
+                      >
+                        <Icon name="lucide:paw-print" size={64} style="opacity: 0.8;" />
+                      </div>
+                      <div
+                        class="card-title"
+                        data-i18n="projects.card.devii.title"
+                      >
+                        Devii - Journaling App
+                      </div>
+                      <div
+                        class="chips-container"
+                        style="margin-top: -4px; margin-bottom: 12px;"
+                      >
+                        <div
+                          class="single-chip small-chip"
+                          style="display: flex; align-items: center; gap: 4px;"
+                        >
+                          <Icon name="lucide:smartphone" size={12} />
+                          Flutter
+                        </div>
+                        <div
+                          class="single-chip small-chip"
+                          style="display: flex; align-items: center; gap: 4px;"
+                        >
+                          <Icon name="lucide:flame" size={12} />
+                          Firebase
+                        </div>
+                        <div
+                          class="single-chip small-chip"
+                          style="display: flex; align-items: center; gap: 4px;"
+                        >
+                          <Icon name="lucide:check-circle" size={12} />
+                          ISO 29110
+                        </div>
+                      </div>
+                      <div
+                        class="card-desc"
+                        data-i18n="projects.card.devii.desc"
+                      >
+                        Mobile app for individuals with eating disorders.
+                        Encourages healthy habits and emotional monitoring.
+                      </div>
+                      <a
+                        href="/details/devii"
+                        class="card-link"
+                        data-i18n="projects.details">Ver detalles</a
+                      >
+                    </div>
+                    <!-- Card 2: SICZ -->
+                    <div class="card">
+                      <div
+                        class="card-image-container"
+                        style="height: 140px; min-height: 140px; background: transparent; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;"
+                      >
+                        <Image
+                          src={siczImg}
+                          alt="SICZ - Cultural Institute"
+                          loading="eager"
+                          style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; opacity: 0.8;"
+                        />
+                      </div>
+                      <div
+                        class="card-title"
+                        data-i18n="projects.card.sicz.title"
+                      >
+                        SICZ - Cultural Institute
+                      </div>
+                      <div
+                        class="chips-container"
+                        style="margin-top: -4px; margin-bottom: 12px;"
+                      >
+                        <div
+                          class="single-chip small-chip"
+                          style="display: flex; align-items: center; gap: 4px;"
+                        >
+                          <Icon name="lucide:server" size={12} />
+                          Django
+                        </div>
+                        <div
+                          class="single-chip small-chip"
+                          style="display: flex; align-items: center; gap: 4px;"
+                        >
+                          <Icon name="lucide:layout" size={12} />
+                          Bootstrap
+                        </div>
+                        <div
+                          class="single-chip small-chip"
+                          style="display: flex; align-items: center; gap: 4px;"
+                        >
+                          <Icon name="lucide:users-2" size={12} />
+                          Accessibility
+                        </div>
+                      </div>
+                      <div
+                        class="card-desc"
+                        data-i18n="projects.card.sicz.desc"
+                      >
+                        System for the Zacatecas Cultural Institute focused on
+                        data preservation and modernization.
+                      </div>
+                      <a
+                        href="/details/sicz"
+                        class="card-link"
+                        data-i18n="projects.details">Ver detalles</a
+                      >
+                    </div>
+                  </div>
+                </div>
+                <button class="carousel-btn next" id="highlight-next"
+                  >&gt;</button
+                >
+              </div>
+            </div>
+
+            <!-- Carousel Section Two (Practice Designs) -->
+            <div style="margin-bottom: 8px;">
+              <div
+                class="section-title"
+                style="margin-bottom: 8px;"
+                data-i18n="projects.practice.title"
+              >
+                UI/UX Practice Designs
+              </div>
+              <p
+                class="lead"
+                style="margin-bottom: 24px; font-size: 16px;"
+                data-i18n="projects.practice.intro"
+              >
+                Conceptos y desafíos divertidos de UI/UX que diseño por pura
+                práctica. Aunque algunos puedan ser irreales, me ayudan a
+                explorar mi creatividad y estilo visual (¡como la interfaz de
+                una máquina del tiempo!).
+              </p>
+              <div class="carousel-wrapper">
+                <button class="carousel-btn prev" id="ux-prev">&lt;</button>
+                <div class="carousel-container" style="width: 100%;">
+                  <div class="carousel-track" id="ux-track">
+                    <!-- Currently Empty State Placeholder -->
+                    <div
+                      class="empty-state-container"
+                      style="display: none; flex-direction: column; align-items: center; justify-content: center; width: 100%; min-height: 200px; gap: 16px; color: #a8a8a8; opacity: 0.8;"
+                    >
+                      <Icon name="lucide:edit-3" size={48} />
+                      <p
+                        data-i18n="projects.practice.empty"
+                        style="font-size: 18px; margin: 0;"
+                      >
+                        Currently designing new experiences...
+                      </p>
+                    </div>
+                    <!-- Closing empty-state-container -->
+                    <!-- Cards removed to test empty state -->
+                    <!-- Card 4 (Commented for future use)
+                    <div class="card">
+                         <div
+                           class="card-image-container"
+                           style="height: 140px; min-height: 140px; background: transparent; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;"
+                         >
+                           <Icon name="lucide:pencil" size={54} style="opacity: 0.8;" />
+                         </div>
+                       <div class="card-title">Smart Mirror OS</div>
+                       <div
+                         class="chips-container"
+                         style="margin-top: -4px; margin-bottom: 12px;"
+                       >
+                         <div class="single-chip small-chip" style="display: flex; align-items: center; gap: 4px;">
+                           <Icon name="lucide:monitor" size={12} />
+                           Interface
+                         </div>
+                       </div>
+                       <div class="card-desc">
+                         Sistema operativo gestual diseñado para espejos
+                         inteligentes mientras te preparas para tu día en la
+                         mañana.
+                       </div>
+                       <a href="/details/project-template" class="card-link">Ver detalles</a>
+                    </div>
+                    -->
+                  </div>
+                  <button class="carousel-btn next" id="ux-next">&gt;</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Grid Archive Section -->
+            <div
+              class="section-title"
+              style="margin-top: 32px; margin-bottom: 32px;"
+              data-i18n="projects.archive.title"
+            >
+              Other Developed Projects
+            </div>
+
+            <section class="items-container">
+              <div class="resouce-items">
+                {
+                  projects.map((project) => (
+                    <Project
+                      key={project.key}
+                      title={project.title}
+                      desc={project.desc}
+                      tech={project.tech}
+                    />
+                  ))
+                }
+              </div>
+            </section>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!--[if lte IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
+
+    <!-- Image View Modal -->
+    <div id="image-modal" class="image-modal">
+      <span class="close-modal">&times;</span>
+      <img src="" alt="Zoomed view" class="image-modal-content" />
+    </div>
+
+    <!-- Page Interaction Scripts -->
+    <script is:inline>
+      document.addEventListener("astro:page-load", () => {
+        const setupCarousel = (trackId, prevBtnId, nextBtnId) => {
+          const track = document.getElementById(trackId);
+          const prevBtn = document.getElementById(prevBtnId);
+          const nextBtn = document.getElementById(nextBtnId);
+
+          if (!track || !prevBtn || !nextBtn) return;
+
+          // Check if carousel is empty
+          const cards = track.querySelectorAll(".card");
+          if (cards.length === 0) {
+            const emptyState = track.querySelector(".empty-state-container");
+            if (emptyState) {
+              emptyState.style.display = "flex";
+              // Hide navigation buttons
+              prevBtn.style.display = "none";
+              nextBtn.style.display = "none";
+            }
+          }
+
+          nextBtn.addEventListener("click", () => {
+            const card = track.querySelector(".card");
+            const gap = parseInt(window.getComputedStyle(track).gap) || 24;
+            const scrollAmount = card ? card.offsetWidth + gap : 344;
+            track.scrollBy({ left: scrollAmount, behavior: "smooth" });
+          });
+
+          prevBtn.addEventListener("click", () => {
+            const card = track.querySelector(".card");
+            const gap = parseInt(window.getComputedStyle(track).gap) || 24;
+            const scrollAmount = card ? card.offsetWidth + gap : 344;
+            track.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+          });
+        };
+
+        setupCarousel("ux-track", "ux-prev", "ux-next");
+        setupCarousel("highlight-track", "highlight-prev", "highlight-next");
+
+        const modal = document.getElementById("image-modal");
+        const modalImg = modal?.querySelector(".image-modal-content");
+        const closeBtn = modal?.querySelector(".close-modal");
+        const uxTrack = document.getElementById("ux-track");
+
+        if (!modal || !uxTrack || !modalImg || !closeBtn) return;
+
+        uxTrack.addEventListener("click", (e) => {
+          if (
+            e.target.tagName === "IMG" &&
+            e.target.closest(".card-image-container")
+          ) {
+            modal.style.display = "flex";
+            document.body.classList.add("modal-open");
+            setTimeout(() => modal.classList.add("show"), 10);
+            modalImg.src = e.target.src;
+            modalImg.alt = e.target.alt;
+          }
+        });
+
+        const closeModal = () => {
+          modal.classList.remove("show");
+          document.body.classList.remove("modal-open");
+          setTimeout(() => (modal.style.display = "none"), 300);
+        };
+
+        closeBtn.addEventListener("click", closeModal);
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) closeModal();
+        });
+
+        const handleKeyDown = (e) => {
+          if (e.key === "Escape" && modal.classList.contains("show"))
+            closeModal();
+        };
+        document.addEventListener("keydown", handleKeyDown);
+
+        document.addEventListener(
+          "astro:before-swap",
+          () => {
+            document.removeEventListener("keydown", handleKeyDown);
+          },
+          { once: true },
+        );
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,321 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import Header from "../components/Header.astro";
+import Sidebar from "../components/Sidebar.astro";
+import FloatingControls from "../components/FloatingControls.astro";
+
+import siczImg from "../assets/projects/sicz/sicz.png";
+---
+
+<!doctype html>
+<html>
+  <Header title="Rolando Aguilar Ordaz | Software Engineer" />
+
+  <body>
+    <FloatingControls />
+    <!-- Main layout container -->
+    <div class="content">
+      <!-- Left sidebar navigation -->
+      <Sidebar selectedItem="home" />
+
+      <!-- Main scrollable content area -->
+      <nav class="main">
+        <div class="container">
+          <!-- Hero / Header intro -->
+           <div
+            class="hero-wrapper"
+            style="display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; text-align: center;"
+          >
+            <main
+              class="fold-content-container"
+              style="max-width: 800px; margin: 0 auto;"
+            >
+              <div class="fold-content" style="margin-bottom: 0;">
+                <h1
+                  style="font-weight: 300; font-size: 58px; line-height: 72px; margin-top: 0; margin-bottom: 18px;"
+                >
+                  <span data-i18n="hero.hi">Hi! I'm Rolando</span><br />
+                  <span data-i18n="hero.title"
+                    >I design and build things for the people.</span
+                  >
+                </h1>
+                <p class="lead" style="margin: 0 auto;" data-i18n="hero.desc">
+                  "Passionate Software Engineer with a strong love for UX/UI.
+                  Actively seeking opportunities to build intuitive, visually
+                  appealing interfaces and create engaging user experiences."
+                </p>
+              </div>
+            </main>
+          </div>
+
+          <!-- Grid section -->
+          <div class="ui-projects-section">
+            <div class="section-title" data-i18n="home.projects.title">
+              Projects
+            </div>
+            <p
+              class="bento-text"
+              style="width: 100%; margin-bottom: 24px; text-align: center;"
+              data-i18n="home.projects.intro"
+            >
+              Estos son algunos proyectos que quiero poner como destacados para
+              una vista rápida de mí. En la sección de proyectos los encontrarás
+              con más detalle.
+            </p>
+            <div class="card-list">
+              <!-- Card 1: Devii -->
+              <div class="card">
+                <div class="card-image-container">
+                  <Icon
+                    name="lucide:paw-print"
+                    size={64}
+                    style="opacity: 0.8;"
+                  />
+                </div>
+                <div class="card-title" data-i18n="projects.card.devii.title">
+                  Devii - Journaling App
+                </div>
+                <div
+                  class="chips-container"
+                  style="margin-top: -4px; margin-bottom: 12px;"
+                >
+                  <div
+                    class="single-chip small-chip"
+                    style="display: flex; align-items: center; gap: 4px;"
+                  >
+                    <Icon name="lucide:smartphone" size={12} />
+                    <span>Flutter</span>
+                  </div>
+                  <div
+                    class="single-chip small-chip"
+                    style="display: flex; align-items: center; gap: 4px;"
+                  >
+                    <Icon name="lucide:flame" size={12} />
+                    <span>Firebase</span>
+                  </div>
+                </div>
+                <div class="card-desc" data-i18n="projects.card.devii.desc">
+                  Mobile app for individuals with eating disorders. Encourages
+                  healthy habits and emotional monitoring.
+                </div>
+                <a
+                  href="/details/devii"
+                  class="card-link"
+                  data-i18n="home.projects.readMore">Leer más</a
+                >
+              </div>
+
+              <!-- Card 2: SICZ -->
+              <div class="card">
+                <div class="card-image-container">
+                  <Image
+                    src={siczImg}
+                    alt="SICZ - Cultural Institute"
+                    loading="eager"
+                    style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px 8px 0 0; opacity: 0.8;"
+                  />
+                </div>
+                <div class="card-title" data-i18n="projects.card.sicz.title">
+                  SICZ - Cultural Institute
+                </div>
+                <div
+                  class="chips-container"
+                  style="margin-top: -4px; margin-bottom: 12px;"
+                >
+                  <div
+                    class="single-chip small-chip"
+                    style="display: flex; align-items: center; gap: 4px;"
+                  >
+                    <Icon name="lucide:server" size={12} />
+                    <span>Django</span>
+                  </div>
+                  <div
+                    class="single-chip small-chip"
+                    style="display: flex; align-items: center; gap: 4px;"
+                  >
+                    <Icon name="lucide:layout" size={12} />
+                    <span>Bootstrap</span>
+                  </div>
+                </div>
+                <div class="card-desc" data-i18n="projects.card.sicz.desc">
+                  System for the Zacatecas Cultural Institute focused on data
+                  preservation and modernization.
+                </div>
+                <a
+                  href="/details/sicz"
+                  class="card-link"
+                  data-i18n="home.projects.readMore">Leer más</a
+                >
+              </div>
+            </div>
+
+            <div
+              style="display: flex; justify-content: center; margin-bottom: 12px;"
+            >
+              <a
+                href="/proyectos"
+                class="button"
+                data-i18n="home.projects.viewAll">Ver todos los proyectos</a
+              >
+            </div>
+          </div>
+
+          <!-- Bento Grid section -->
+          <div class="why-ux-section" style="margin-bottom: 80px;">
+            <div
+              class="section-title"
+              style="margin-bottom: 32px;"
+              data-i18n="bento.title"
+            >
+              Why me?
+            </div>
+
+            <div class="bento-grid bento-no-hover">
+              <!-- Box One -->
+
+              <div class="bento-box bento-ux-approach">
+                <h3 class="bento-title">
+                  <Icon name="lucide:user" class="bento-icon" />
+                  <span data-i18n="bento.approach.title"
+                    >Human & Collective Approach</span
+                  >
+                </h3>
+                <div class="bento-text">
+                  <p data-i18n="bento.approach.text1">
+                    My approach is driven by a deep fascination with
+                    human-centered design, seeing the user not just as an
+                    individual, but as part of a collective. I believe that
+                    well-designed interfaces have the power to elevate both
+                    satisfaction and group empowerment. My goal is to bridge the
+                    gap between technical functionality and collective needs,
+                    creating seamless and collaborative experiences.
+                  </p>
+                  <p data-i18n="bento.approach.text2">
+                    Educated at UAZ, I blend a strong technical foundation with
+                    a creative flair for aesthetics. I know that optimal UX
+                    requires research, prototyping, and iterating based on real
+                    feedback. Beyond coding, I'm a gamer and movie enthusiast
+                    who values human connections (like those forged at
+                    university) and time with my dogs, allowing me to design
+                    with an empathetic and down-to-earth perspective.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Box Two -->
+              <div class="bento-box bento-ux-gamification">
+                <h3 class="bento-title">
+                  <Icon name="lucide:gamepad-2" class="bento-icon" />
+                  <span data-i18n="bento.gamification.title"
+                    >Mastery of Gamification</span
+                  >
+                </h3>
+                <div class="bento-text" data-i18n="bento.gamification.text">
+                  As a gamer myself, I love applying game design structures to
+                  non-game environments. In our current 2020s context, the
+                  success of apps like Duolingo and Waze has proven that
+                  gamification is essential for transforming tedious
+                  interactions into rewarding and effective journeys.
+                </div>
+              </div>
+
+              <!-- Box Three -->
+              <div class="bento-box bento-ux-eng">
+                <h3 class="bento-title">
+                  <Icon name="lucide:heart" class="bento-icon" />
+                  <span data-i18n="bento.eng.title"
+                    >Engineering with a UX Heart</span
+                  >
+                </h3>
+                <div class="bento-text" data-i18n="bento.eng.text">
+                  Being a Software Engineer allows me to go beyond just building
+                  interfaces. I integrate principles of human psychology to
+                  deeply understand the user and facilitate usability. My
+                  technical background enables me to design dynamic and viable
+                  solutions, bridging the gap between system architecture and a
+                  seamless, beautiful user experience.
+                </div>
+              </div>
+
+              <!-- Box Four -->
+              <div class="bento-box bento-ux-ai">
+                <h3 class="bento-title">
+                  <Icon name="lucide:cpu" class="bento-icon" />
+                  <span data-i18n="bento.ai.title">Thinking about AI</span>
+                </h3>
+                <div class="bento-text" data-i18n="bento.ai.text">
+                  While I'm not a fan of chatbots or generative AI for images
+                  and videos—a stance that remains firm—I believe AI is
+                  exceptionally useful in software development. I see it as a
+                  companion to optimize tasks, ensuring that the engineer can
+                  have a life outside of work, rather than letting work become
+                  their entire life.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!--[if lte IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
+
+    <!-- Image Lightbox Modal -->
+    <!-- Image Lightbox Modal -->
+    <div id="image-modal" class="image-modal">
+      <span class="close-modal">&times;</span>
+      <img src="" alt="Zoomed view" class="image-modal-content" />
+    </div>
+
+    <!-- Client-side script for Lightbox functionality -->
+    <script is:inline>
+      document.addEventListener("astro:page-load", () => {
+        const modal = document.getElementById("image-modal");
+        const modalImg = modal?.querySelector(".image-modal-content");
+        const closeBtn = modal?.querySelector(".close-modal");
+        const container = document.querySelector(".card-list");
+
+        if (!modal || !container || !modalImg || !closeBtn) return;
+
+        container.addEventListener("click", (e) => {
+          const isCardImg =
+            e.target.tagName === "IMG" &&
+            e.target.closest(".card-image-container");
+          if (isCardImg) {
+            modal.style.display = "flex";
+            document.body.classList.add("modal-open");
+            setTimeout(() => modal.classList.add("show"), 10);
+            modalImg.src = e.target.src;
+            modalImg.alt = e.target.alt;
+          }
+        });
+
+        const closeModal = () => {
+          modal.classList.remove("show");
+          document.body.classList.remove("modal-open");
+          setTimeout(() => (modal.style.display = "none"), 300);
+        };
+
+        closeBtn.addEventListener("click", closeModal);
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) closeModal();
+        });
+
+        const handleKeyDown = (e) => {
+          if (e.key === "Escape" && modal.classList.contains("show"))
+            closeModal();
+        };
+        document.addEventListener("keydown", handleKeyDown);
+
+        document.addEventListener(
+          "astro:before-swap",
+          () => {
+            document.removeEventListener("keydown", handleKeyDown);
+          },
+          { once: true },
+        );
+      });
+    </script>
+  </body>
+</html>

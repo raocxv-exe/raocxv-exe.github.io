@@ -1,0 +1,240 @@
+---
+import { Icon } from "astro-icon/components";
+import Header from "../components/Header.astro";
+import Sidebar from "../components/Sidebar.astro";
+import FloatingControls from "../components/FloatingControls.astro";
+---
+
+<!doctype html>
+<html>
+  <Header title="Design Process | Rolando Aguilar Ordaz" />
+  <body>
+    <FloatingControls />
+    <div class="content">
+      <Sidebar selectedItem="design-process" />
+      <nav class="main" style="padding-left: 0; padding-right: 0;">
+        <div class="container" style="max-width: 100%; width: 100%;">
+          <div class="back-nav-container" style="margin-left: 48px;">
+            <a href="/" class="back-nav-button w-inline-block">
+              <Icon name="lucide:chevron-left" class="back-nav-img" />
+              <div data-i18n="nav.back">Back</div>
+            </a>
+          </div>
+          <div
+            class="content-container"
+            style="padding: 0 48px; margin-bottom: 24px;"
+          >
+            <div class="section-title" data-i18n="design.title">Design Process</div>
+            <p class="lead" style="font-size: 18px; width: 100%; max-width: 1200px;" data-i18n="design.lead">
+              Una mirada a mi metodología de trabajo, desde entender el problema
+              inicial hasta convertirlo en un producto funcional.
+            </p>
+          </div>
+
+          <div class="timeline-container">
+            <div class="timeline-track">
+              <!-- Item 01 -->
+              <div class="timeline-step">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-number">01</div>
+                  <div class="timeline-title" data-i18n="design.step1.title">
+                    <Icon name="lucide:search" class="bento-icon" size={20} />
+                    DT: Inquiry & Empathy
+                  </div>
+                  <div class="timeline-desc" data-i18n="design.step1.desc">
+                    Design Thinking phase to connect with real users.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item 02 -->
+              <div class="timeline-step">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-number">02</div>
+                  <div class="timeline-title" data-i18n="design.step2.title">
+                    <Icon name="lucide:flask-conical" class="bento-icon" size={20} />
+                    DT: Prototyping & Selection
+                  </div>
+                  <div class="timeline-desc" data-i18n="design.step2.desc">
+                    Building two competitive prototypes and selecting the winning solution.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item 03 -->
+              <div class="timeline-step">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-number">03</div>
+                  <div class="timeline-title" data-i18n="design.step3.title">
+                    <Icon name="lucide:file-text" class="bento-icon" size={20} />
+                    SDLC: Engineering & Documentation
+                  </div>
+                  <div class="timeline-desc" data-i18n="design.step3.desc">
+                    Technical engineering rigor: Creating SRS/SDS and architecture.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item 04 -->
+              <div class="timeline-step">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-number">04</div>
+                  <div class="timeline-title" data-i18n="design.step4.title">
+                    <Icon name="lucide:git-graph" class="bento-icon" size={20} />
+                    SDLC: Flows & Wireframes
+                  </div>
+                  <div class="timeline-desc" data-i18n="design.step4.desc">
+                    Translating user stories into flow diagrams and wireframes.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item 05 -->
+              <div class="timeline-step">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-number">05</div>
+                  <div class="timeline-title" data-i18n="design.step5.title">
+                    <Icon name="lucide:palette" class="bento-icon" size={20} />
+                    Design: High Fidelity
+                  </div>
+                  <div class="timeline-desc" data-i18n="design.step5.desc">
+                    Final interface design applying my philosophy of intuitive beauty.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item 06 -->
+              <div class="timeline-step">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-number">06</div>
+                  <div class="timeline-title" data-i18n="design.step6.title">
+                    <Icon name="lucide:code-2" class="bento-icon" size={20} />
+                    SDLC: Iterative Development
+                  </div>
+                  <div class="timeline-desc" data-i18n="design.step6.desc">
+                    Sprint-based coding with constant validations.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item 07 -->
+              <div class="timeline-step">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-number">07</div>
+                  <div class="timeline-title" data-i18n="design.step7.title">
+                    <Icon name="lucide:rocket" class="bento-icon" size={20} />
+                    Delivery & Launch
+                  </div>
+                  <div class="timeline-desc" data-i18n="design.step7.desc">
+                    Consolidating documentation and system delivery.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Symbology/Legend -->
+          <div class="content-container" style="padding: 0 48px; margin-bottom: 48px; margin-top: -40px;">
+            <div style="display: flex; gap: 24px; font-size: 14px; opacity: 0.7; color: #fff;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <strong style="color: #fff;">DT:</strong> Design Thinking
+              </div>
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <strong style="color: #fff;">SDLC:</strong> Software Development Life Cycle (Ciclo de Vida de Desarrollo de Software)
+              </div>
+            </div>
+          </div>
+
+          <!-- Secondary Content Section -->
+          <div
+            class="content-container"
+            style="padding: 0 48px; margin-bottom: 80px;"
+          >
+            <div class="section-title" style="margin-bottom: 32px;" data-i18n="design.principles.title">
+              Principios de Diseño
+            </div>
+            <div
+              style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;"
+            >
+              <!-- Info Card 01 -->
+              <div
+                class="card"
+                style="padding: 32px; transition: transform 0.2s ease;"
+              >
+                <h4
+                  style="margin-top: 0; margin-bottom: 12px; font-size: 20px; display: flex; align-items: center; gap: 8px;"
+                >
+                  <Icon name="lucide:brain" class="bento-icon" size={24} />
+                  <span data-i18n="design.principles.1.title">Cognitive Psychology</span>
+                </h4>
+                <p
+                  class="project-desc"
+                  style="line-height: 1.6; margin-bottom: 0;"
+                  data-i18n="design.principles.1.desc"
+                >
+                  El diseño no debe ser una barrera, sino una herramienta
+                  compasiva. Me pongo en los zapatos de los usuarios finales
+                  para asegurar que cada interacción conecte perfectamente con
+                  la necesidad humana detrás de la pantalla.
+                </p>
+              </div>
+
+              <!-- Info Card 02 -->
+              <div
+                class="card"
+                style="padding: 32px; transition: transform 0.2s ease;"
+              >
+                <h4
+                  style="margin-top: 0; margin-bottom: 12px; font-size: 20px; display: flex; align-items: center; gap: 8px;"
+                >
+                  <Icon name="lucide:users-2" class="bento-icon" size={24} />
+                  <span data-i18n="design.principles.2.title">Collective Impact</span>
+                </h4>
+                <p
+                  class="project-desc"
+                  style="line-height: 1.6; margin-bottom: 0;"
+                  data-i18n="design.principles.2.desc"
+                >
+                  Huyo de la estética "fría y corporativa". Creo en herramientas
+                  que inspiren fuerza de trabajo, empoderando colectivamente a
+                  los usuarios en entornos lúdicos o interactivos, fomentando
+                  comunidad en lugar de burocracia.
+                </p>
+              </div>
+
+              <!-- Info Card 03 -->
+              <div
+                class="card"
+                style="padding: 32px; transition: transform 0.2s ease;"
+              >
+                <h4
+                  style="margin-top: 0; margin-bottom: 12px; font-size: 20px; display: flex; align-items: center; gap: 8px;"
+                >
+                  <Icon name="lucide:sparkles" class="bento-icon" size={24} />
+                  <span data-i18n="design.principles.3.title">Democratized Aesthetics</span>
+                </h4>
+                <p
+                  class="project-desc"
+                  style="line-height: 1.6; margin-bottom: 0;"
+                  data-i18n="design.principles.3.desc"
+                >
+                  No impongo un estilo único y terco. Cada producto es distinto
+                  y requiere adaptabilidad visual. Me mantengo estudiando nuevas
+                  herramientas y afilando el diseño apoyándome en las tendencias
+                  más recientes y óptimas del mercado global.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </body>
+</html>

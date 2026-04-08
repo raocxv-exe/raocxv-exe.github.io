@@ -1,0 +1,268 @@
+---
+import { Icon } from "astro-icon/components";
+const { selectedItem } = Astro.props;
+---
+
+<aside
+  data-animation="default"
+  data-collapse="medium"
+  data-duration="400"
+  data-easing="ease"
+  data-easing2="ease"
+  role="banner"
+  class="sidebar w-nav"
+>
+  <div class="nav-content">
+    <a href="/" class="w-nav-brand" aria-label="home">
+      <div class="niv-data">
+        <Icon
+          name="lucide:sticker"
+          class="niv-image"
+          style="padding: 8px; background-color: var(--card-bg, #2b2b2b);"
+        />
+        <div>
+          <div
+            class="label-white"
+            style="display: flex; align-items: center; gap: 6px;"
+          >
+            Rolando Aguilar Ordaz
+          </div>
+          <div class="label-gray">Software Engineer</div>
+        </div>
+      </div>
+    </a>
+
+    <nav role="navigation" class="w-nav-menu">
+      <a
+        href="/"
+        class={`nav-link-container w-inline-block ${
+          selectedItem === "home" ? "w--current" : ""
+        }`}
+      >
+        <Icon name="lucide:house" class="nav-link-image" />
+        <span data-i18n="nav.home">Home</span>
+      </a>
+      <a
+        href="/proyectos"
+        class={`nav-link-container w-inline-block ${
+          selectedItem === "proyectos" ? "w--current" : ""
+        }`}
+        aria-current={selectedItem === "proyectos" ? "page" : undefined}
+      >
+        <Icon name="lucide:folder-open" class="nav-link-image" />
+        <span data-i18n="nav.projects">Projects</span>
+      </a>
+      <a
+        href="/design-process"
+        class={`nav-link-container w-inline-block ${
+          selectedItem === "design-process" ? "w--current" : ""
+        }`}
+      >
+        <Icon name="lucide:list-ordered" class="nav-link-image" />
+        <span data-i18n="nav.design">Design Process</span>
+      </a>
+      <a
+        href="/about-me"
+        class={`nav-link-container w-inline-block ${
+          selectedItem === "about-me" ? "w--current" : ""
+        }`}
+      >
+        <Icon name="lucide:heart" class="nav-link-image" />
+        <span data-i18n="nav.about">About me</span>
+      </a>
+
+      <!-- 
+      <div class="cv-mobile" style="margin-top: 32px;">
+        <a
+          href="/assets/cv_rolandoaguilarordaz.pdf"
+          target="_blank"
+          class="button cv-link"
+          style="width: 100%; border-radius: 8px; display: flex; justify-content: center; align-items: center;"
+          download="CV_Rolando_Aguilar_Ordaz.pdf"
+        >
+          <Icon name="lucide:download" size={16} style="margin-right: 8px;" />
+          <span data-i18n="nav.cv">Download CV</span>
+        </a>
+      </div>
+      -->
+    </nav>
+
+    <!-- 
+    <div class="cv-desktop">
+      <a
+        href="/assets/cv_rolandoaguilarordaz.pdf"
+        target="_blank"
+        class="button cv-link"
+        style="width: 100%; border-radius: 8px; display: flex; justify-content: center; align-items: center;"
+        download="CV_Rolando_Aguilar_Ordaz.pdf"
+      >
+        <Icon name="lucide:download" size={16} style="margin-right: 8px;" />
+        <span data-i18n="nav.cv">Download CV</span>
+      </a>
+    </div>
+    -->
+
+    <div
+      class="navbar-icon-button w-nav-button"
+      style="-webkit-user-select: text;"
+      aria-label="menu"
+      role="button"
+      tabindex="0"
+    >
+      <Icon name="lucide:menu" class="navbar-icon" />
+    </div>
+  </div>
+
+  <script>
+    import { setupNav } from "../scripts/nav.js";
+    import {
+      getLang,
+      setLang,
+      updateUI,
+      toggleLang,
+    } from "../scripts/translate.js";
+
+    let cleanup;
+
+    function initLang() {
+      const lang = getLang();
+      updateUI(lang);
+    }
+
+    // Register global listener once
+    if (!(window as any).hasLangListener) {
+      document.addEventListener("click", (e) => {
+        const target = e.target as HTMLElement;
+        const btn = target.closest(".lang-toggle-btn");
+        if (btn) {
+          toggleLang();
+        }
+      });
+      (window as any).hasLangListener = true;
+    }
+
+    function initTheme() {
+      const isLightMode = document.documentElement.classList.contains("light-mode");
+      const checkboxes = document.querySelectorAll(".theme-checkbox");
+
+      checkboxes.forEach((chk) => {
+        const input = chk as HTMLInputElement;
+        input.checked = isLightMode;
+        input.addEventListener("change", (e) => {
+          const target = e.target as HTMLInputElement;
+          const isLight = target.checked;
+          if (isLight) {
+            document.documentElement.classList.add("light-mode");
+            localStorage.setItem("theme", "light");
+          } else {
+            document.documentElement.classList.remove("light-mode");
+            localStorage.setItem("theme", "dark");
+          }
+          // Sync other checkboxes
+          document.querySelectorAll(".theme-checkbox").forEach((c) => {
+            if (c !== e.target) (c as HTMLInputElement).checked = isLight;
+          });
+        });
+      });
+    }
+
+    document.addEventListener("astro:page-load", () => {
+      if (cleanup) cleanup();
+      cleanup = setupNav();
+      initTheme();
+    });
+
+    document.addEventListener("astro:after-swap", () => {
+    });
+
+    document.addEventListener("astro:before-swap", () => {
+      if (cleanup) cleanup();
+    });
+  </script>
+
+  <style>
+    .theme-switch-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    .theme-switch-label {
+      color: #a8a8a8;
+      font-size: 14px;
+    }
+    .theme-switch {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+    }
+    .theme-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #353535;
+      transition: 0.4s;
+      border-radius: 24px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: #a8a8a8;
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: #fff;
+    }
+    input:checked + .slider:before {
+      background-color: #1c1c1c;
+      transform: translateX(20px);
+    }
+
+    .cv-desktop {
+      margin-top: auto;
+      padding-top: 32px;
+      width: 100%;
+    }
+    .cv-mobile {
+      display: none;
+    }
+
+    /* Force icons in sidebar to be white for better visibility */
+    .sidebar :global(svg) {
+      color: #fff !important;
+      opacity: 1 !important;
+    }
+
+    .nav-link-container.w--current .nav-link-image {
+      color: #fff !important;
+      opacity: 1 !important;
+    }
+
+    @media screen and (max-width: 991px) {
+      .cv-desktop {
+        display: none !important;
+      }
+      .cv-mobile {
+        display: block;
+        margin-top: 32px;
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-bottom: 24px;
+      }
+    }
+  </style>
+</aside>

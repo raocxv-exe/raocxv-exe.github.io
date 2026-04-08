@@ -1,0 +1,47 @@
+---
+import { Icon } from 'astro-icon/components';
+const { title, desc, tech, key } = Astro.props;
+
+const getIcon = (item) => {
+  const map = {
+    'React': 'lucide:atom',
+    'Next.js': 'lucide:globe',
+    'Node.js': 'lucide:server',
+    'MongoDB': 'lucide:database',
+    'Astro': 'lucide:rocket',
+    'Figma': 'lucide:figma',
+    'Tailwind': 'lucide:wind',
+    'Python': 'lucide:terminal',
+    'Docker': 'lucide:container',
+    'Kubernetes': 'lucide:layers',
+    'RabbitMQ': 'lucide:message-square',
+    'Heroku': 'lucide:cloud',
+    'Django': 'lucide:server',
+    'Bootstrap': 'lucide:layout',
+    'JavaScript': 'lucide:code-2',
+    'HTML/CSS': 'lucide:file-code',
+    'Java': 'lucide:coffee',
+    'NeoForge': 'lucide:anvil',
+    'Gradle': 'lucide:box',
+  };
+  return map[item] || 'lucide:hash';
+};
+---
+
+<div class="single-item">
+  <h3 data-i18n={`${key}.title`}>{title}</h3>
+  <div class="project-desc project-desc-list w-richtext">
+    <ul role="list">
+      {desc.map((item, index) => <li data-i18n={`${key}.d${index + 1}`}>{item}</li>)}
+    </ul>
+  </div>
+  <div class="mini-label-white" data-i18n="projects.tech.tools">Technologies &amp; tools</div>
+  <div class="chips-container">
+    {tech.map(techItem => (
+      <div class="single-chip" style="display: flex; align-items: center; gap: 6px;">
+        <Icon name={getIcon(techItem)} size={14} />
+        {techItem}
+      </div>
+    ))}
+  </div>
+</div>

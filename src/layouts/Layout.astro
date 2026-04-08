@@ -1,0 +1,109 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<script is:inline>
+			// Add a class to block transitions during load
+			document.documentElement.classList.add("no-transitions");
+
+			// Determine and apply theme immediately
+			const theme = (() => {
+				if (
+					typeof localStorage !== "undefined" &&
+					localStorage.getItem("theme")
+				) {
+					return localStorage.getItem("theme");
+				}
+				if (
+					window.matchMedia("(prefers-color-scheme: light)").matches
+				) {
+					return "light";
+				}
+				return "dark";
+			})();
+
+			if (theme === "light") {
+				document.documentElement.classList.add("light-mode");
+			} else {
+				document.documentElement.classList.remove("light-mode");
+			}
+
+			// Handle Astro ViewTransitions (Navigation)
+			document.addEventListener("astro:before-swap", (ev) => {
+				ev.newDocument.documentElement.classList.add("no-transitions");
+				if (document.documentElement.classList.contains("light-mode")) {
+					ev.newDocument.documentElement.classList.add("light-mode");
+				} else {
+					ev.newDocument.documentElement.classList.remove("light-mode");
+				}
+			});
+
+			// Use astro:page-load for BOTH initial load and navigation
+			document.addEventListener("astro:page-load", () => {
+				// Wait for all other page-load scripts (like FloatingControls, splide, etc.)
+				// to finish their DOM updates, then allow 1 frame for paint, then enable transitions.
+				setTimeout(() => {
+					requestAnimationFrame(() => {
+						document.documentElement.classList.remove("no-transitions");
+					});
+				}, 150);
+			});
+		</script>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+<style is:global>
+	/* Prevent transition flash on load */
+	.no-transitions *,
+	.no-transitions *:before,
+	.no-transitions *:after {
+		-webkit-transition: none !important;
+		-moz-transition: none !important;
+		-ms-transition: none !important;
+		-o-transition: none !important;
+		transition: none !important;
+	}
+
+	:root {
+		--accent: 136, 58, 234;
+		--accent-light: 224, 204, 250;
+		--accent-dark: 49, 10, 101;
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			rgb(var(--accent-light)) 30%,
+			white 60%
+		);
+	}
+	html {
+		font-family: "Google Sans Code", monospace, system-ui, sans-serif;
+		background: #13151a;
+		background-size: 224px;
+	}
+	code {
+		font-family:
+			Menlo,
+			Monaco,
+			Lucida Console,
+			Liberation Mono,
+			DejaVu Sans Mono,
+			Bitstream Vera Sans Mono,
+			Courier New,
+			monospace;
+	}
+</style>
