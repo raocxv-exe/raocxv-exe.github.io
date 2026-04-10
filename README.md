@@ -1,6 +1,7 @@
 # Mi Portafolio Profesional
 
 ¡Bienvenido a mi sitio web personal! Esta es la plataforma donde comparto mi trayectoria como desarrollador, mis proyectos más relevantes y mi experiencia profesional.
+# https://raocxv-exe.github.io/
 
 ## 🌟 ¿Qué es este sitio?
 
@@ -9,7 +10,7 @@ Este sitio web es un **Portafolio Interactivo** diseñado para presentar de mane
 - **📄 Currículum Vitae (CV):** Mi trayectoria profesional y académica (UAZ) disponible en dos idiomas.
 - **💻 Proyectos Seleccionados:** Desde apps móviles como **Devii** (Gamificación y Salud Mental) hasta sistemas complejos como **SICZ**.
 - **🧠 Mi Filosofía (Why me?):** Por qué mi enfoque combina la ingeniería robusta con la psicología humana y el diseño centrado en el colectivo.
-- **🎮 Toque Personal:** Mi faceta como gamer y cinéfilo, y cómo esto influye en mi visión del software moderno.
+
 
 ---
 
@@ -30,5 +31,3 @@ Si estás buscando detalles técnicos sobre cómo correr el proyecto localmente 
 👉 **[Consultar detalles técnicos (Instrucciones y Estructura)](./details.md)**
 
 ---
-
-*Desarrollado con ❤️ por Rolando Aguilar*
