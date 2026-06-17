@@ -17,6 +17,7 @@ export const translations = {
     'nav.theme.dark': 'Modo Oscuro',
     'nav.lang.toggle': 'EN | ES',
     'nav.back': 'Volver',
+    'sidebar.role': 'Ingeniero de Software',
 
     // Page Titles
     'page.title.home': 'Portfolio | Rolando Aguilar Ordaz',
@@ -97,6 +98,8 @@ export const translations = {
     'design.principles.2.desc': 'Diseño pensando en el usuario no solo como individuo, sino como parte de un colectivo. Creo herramientas que resuelven necesidades comunes y fomentan el empoderamiento grupal, transformando la burocracia en experiencias lúdicas y colaborativas.',
     'design.principles.3.title': 'Estética Democratizada',
     'design.principles.3.desc': 'La belleza visual debe ser accesible para todos. Mi enfoque es crear lenguajes visuales que inspiren y sean fáciles de navegar, democratizando un diseño de alta fidelidad que se adapte dinámicamente a las necesidades reales del mercado.',
+    'design.legend.dt': 'Design Thinking',
+    'design.legend.sdlc': 'Ciclo de Vida de Desarrollo de Software',
 
     // Projects Page
     'projects.title': 'Proyectos',
@@ -138,6 +141,8 @@ export const translations = {
     'projects.card.devii.desc': 'App móvil para personas con trastornos alimenticios. Fomenta hábitos saludables y autocontrol emocional mediante journaling e interacción con mascotas. Desarrollada bajo ISO 29110.',
     'projects.card.sicz.title': 'SICZ - Instituto de Cultura',
     'projects.card.sicz.desc': 'Sistema para el Instituto Zacatecano de Cultura enfocado en la preservación y modernización de datos culturales. Optimizado para hardware de bajos recursos y máxima accesibilidad.',
+    'projects.card.ulama.title': 'Ulama - Mundial 2026',
+    'projects.card.ulama.desc': 'App Android para seguir el Mundial 2026: calendario, resultados en vivo, tabla de grupos y quiniela. Construida con Kotlin y Jetpack Compose.',
     
     'projects.archive.satca.title': 'SATCA UAZ',
     'projects.archive.satca.d1': 'Sistema web CRUD integral para la gestión de oferta académica y créditos universitarios.',
@@ -177,7 +182,11 @@ export const translations = {
     'details.results': 'Resultados y Aprendizaje',
     'details.hero.alt': 'Visualización del Proyecto',
     'details.placeholder.results': 'Impacto final del proyecto. Logros alcanzados, feedback del cliente o métricas de éxito.',
+    'details.placeholder.asked': 'Descripción del requerimiento inicial del cliente o el problema que se buscaba resolver con este desarrollo.',
+    'details.placeholder.done': 'Detalles de mis responsabilidades, desde el diseño UI/UX hasta la implementación del backend o arquitectura.',
+    'details.placeholder.analysis': 'Aquí va una explicación más profunda del proceso. Cómo se abordó el problema, los desafíos técnicos encontrados y las decisiones de diseño tomadas.',
     'projects.practice.empty': 'Actualmente diseñando nuevas experiencias...',
+    'details.sourceCode': 'Codigo Fuente',
 
     // SICZ Details
     'details.sicz.title': 'SICZ - Instituto Zacatecano de Cultura',
@@ -188,6 +197,16 @@ export const translations = {
     'details.sicz.analysis.p2': 'Dada la demografía de los usuarios internos (mayores de 40 años), cada decisión de diseño buscó la simplicidad radical. Eliminamos animaciones y elementos pesados para garantizar que el sistema corriera fluido en cualquier terminal de la oficina, permitiendo una transición suave del papel a lo digital.',
     'details.sicz.results.p1': 'El sistema resolvió eficazmente la falta de acceso centralizado a la información cultural del estado de Zacatecas. Los clientes quedaron sumamente satisfechos con la facilidad de uso del inventario y la rapidez de respuesta del software en sus equipos actuales.',
     'details.sicz.results.p2': 'Este proyecto reforzó mi capacidad para diseñar bajo restricciones técnicas estrictas, demostrando que la accesibilidad y el rendimiento son pilares fundamentales de una buena ingeniería de software.',
+    
+    // Ulama Details
+    'details.ulama.title': 'Ulama - Mundial 2026',
+    'details.ulama.lead': 'App Android nativa para seguir el Mundial de Fútbol 2026: calendario de partidos, resultados en vivo, tabla de grupos y quiniela.',
+    'details.ulama.asked': 'Se solicitó una aplicación Android que permitiera a los aficionados seguir el Mundial 2026 de forma sencilla: consultar el calendario completo, resultados en vivo, posiciones de grupos y guardar predicciones de cada partido. El nombre "Ulama" evoca el antiguo juego de pelota mesoamericano, en honor al país anfitrión México.',
+    'details.ulama.done': 'Main developer. Documenté, diseñé y codifiqué la aplicación completa usando Kotlin y Jetpack Compose, con base en el estilo visual de Material Design 3.',
+    'details.ulama.analysis.p1': 'Ulama nació porque necesitaba una aplicación de deportes con diseño simplificado y privacidad real. Al no encontrar una app de fútbol que no pidiera permisos innecesarios ni saturara de anuncios, decidí construir la mía. Kotlin y Jetpack Compose fueron clave: Kotlin por su seguridad con null safety y corrutinas para operaciones asíncronas, y Jetpack Compose por su UI declarativa que permite renderizar la pantalla de partidos según el estado actual sin boilerplate.',
+    'details.ulama.analysis.p2': 'La app es offline-first: Room como base de datos local cachea los fixtures y las predicciones, permitiendo que todo funcione sin internet y se sincronice cuando haya conexión. Los colores los escogí de la cancha de fútbol: el verde pasto y el blanco de la pintura. El logo combina el aro del juego de pelota maya (ulama) con una pelota de hule al centro, conectando el deporte moderno con sus raíces mesoamericanas en honor al país anfitrión México. La app usa dos fuentes de datos: openfootball para el calendario y ESPN para resultados en vivo.',
+    'details.ulama.results.p1': 'El usuario puede activar notificaciones por partido, ajustar el tiempo de alerta previa y marcar equipos favoritos para recibir recordatorios automáticos. La quiniela tiene retroalimentación visual con verde para aciertos y rojo para fallos.',
+    'details.ulama.results.p2': 'La gran lección fue que al tener una identidad de diseño tan marcada —tipografía limpia, tarjetas definidas, paleta verde y blanca— agregar nuevas pantallas y funcionalidades fue sumamente fácil. La app se publicó en GitHub bajo licencia MIT y está disponible para Android 14+.',
     
     // Devii Details
     'details.devii.title': 'Devii - Mobile App',
@@ -218,6 +237,7 @@ export const translations = {
     'nav.theme.dark': 'Dark Mode',
     'nav.lang.toggle': 'ES | EN',
     'nav.back': 'Back',
+    'sidebar.role': 'Software Engineer',
 
     // Page Titles
     'page.title.home': 'Portfolio | Rolando Aguilar Ordaz',
@@ -298,6 +318,8 @@ export const translations = {
     'design.principles.2.desc': 'I design with the user in mind not just as an individual, but as part of a collective. I create tools that solve common needs and foster group empowerment, transforming bureaucracy into playful and collaborative experiences.',
     'design.principles.3.title': 'Democratized Aesthetics',
     'design.principles.3.desc': 'Visual beauty should be accessible to everyone. My approach is to create visual languages that inspire and are easy to navigate, democratizing high-fidelity design that dynamically adapts to real market needs.',
+    'design.legend.dt': 'Design Thinking',
+    'design.legend.sdlc': 'Software Development Life Cycle',
 
     // Projects Page
     'projects.title': 'Projects',
@@ -339,6 +361,8 @@ export const translations = {
     'projects.card.devii.desc': 'Mobile app for individuals with eating disorders. Encourages healthy habits and emotional monitoring through journaling and pet interaction. Developed following ISO 29110.',
     'projects.card.sicz.title': 'SICZ - Cultural Institute',
     'projects.card.sicz.desc': 'System for the Zacatecas Cultural Institute focused on cultural data preservation and modernization. Optimized for low-resource hardware and maximum accessibility.',
+    'projects.card.ulama.title': 'Ulama - World Cup 2026',
+    'projects.card.ulama.desc': 'Android app to follow the 2026 World Cup: fixtures, live scores, group standings and match predictions. Built with Kotlin and Jetpack Compose.',
     
     'projects.archive.satca.title': 'SATCA UAZ',
     'projects.archive.satca.d1': 'Comprehensive CRUD web system for managing academic offerings and university credits.',
@@ -382,6 +406,8 @@ export const translations = {
     'details.placeholder.analysis': 'Here goes a deeper explanation of the process. How the problem was approached, the technical challenges encountered, and the design decisions made.',
     'details.placeholder.results': 'Final impact of the project. Achievements, client feedback, or success metrics.',
     'projects.practice.empty': 'Currently designing new experiences...',
+    'details.sourceCode': 'Source Code',
+
     // SICZ Details
     'details.sicz.title': 'SICZ - Zacatecas Cultural Institute',
     'details.sicz.lead': 'System focused on the preservation, updating, and modernization of cultural data for the state of Zacatecas.',
@@ -391,6 +417,16 @@ export const translations = {
     'details.sicz.analysis.p2': 'Given the demography of internal users (over 40 years old), every design decision sought radical simplicity. We eliminated animations and heavy elements to ensure the system ran smoothly on any office terminal, allowing a smooth transition from paper to digital.',
     'details.sicz.results.p1': 'The system effectively resolved the lack of centralized access to cultural information in the state of Zacatecas. Clients were extremely satisfied with the ease of use of the inventory and the fast response of the software on their current equipment.',
     'details.sicz.results.p2': 'This project reinforced my ability to design under strict technical constraints, proving that accessibility and performance are fundamental pillars of good software engineering.',
+    
+    // Ulama Details
+    'details.ulama.title': 'Ulama - World Cup 2026',
+    'details.ulama.lead': 'Native Android app to follow the 2026 FIFA World Cup: match calendar, live scores, group standings and match predictions.',
+    'details.ulama.asked': 'An Android application was requested to let fans follow the 2026 World Cup easily: browse the full schedule, live scores, group standings and save predictions for every match. The name "Ulama" evokes the ancient Mesoamerican ballgame, honoring the host country Mexico.',
+    'details.ulama.done': 'Main developer. I documented, designed and coded the full application using Kotlin and Jetpack Compose, based on the Material Design 3 visual style.',
+    'details.ulama.analysis.p1': 'Ulama was born because I needed a sports app with simplified design and real privacy. Not finding a football app without unnecessary permissions or ad overload, I decided to build my own. Kotlin and Jetpack Compose were key: Kotlin for its null safety and coroutines for async operations, and Jetpack Compose for its declarative UI that renders the match screen based on current state without boilerplate.',
+    'details.ulama.analysis.p2': 'The app is offline-first: Room as the local database caches fixtures and predictions, so everything works without internet and syncs when connectivity returns. The colors came from the soccer field: grass green and line white. The logo combines the Mayan ballgame ring (ulama) with a rubber ball at the center, connecting modern sport to its Mesoamerican roots in honor of host country Mexico. The app uses two data sources: openfootball for fixtures and ESPN for live scores.',
+    'details.ulama.results.p1': 'Users can enable match notifications, adjust pre-match alert time and mark favorite teams for automatic reminders. The prediction system gives visual feedback with green for correct and red for wrong guesses.',
+    'details.ulama.results.p2': 'The biggest lesson was that having such a strong design identity —clean typography, defined cards, green and white palette— made adding new screens and features extremely easy. The app was published on GitHub under MIT license and is available for Android 14+.',
     
     // Devii Details
     'details.devii.title': 'Devii - Mobile App',

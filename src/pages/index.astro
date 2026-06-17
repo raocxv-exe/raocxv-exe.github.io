@@ -6,6 +6,7 @@ import Sidebar from "../components/Sidebar.astro";
 import FloatingControls from "../components/FloatingControls.astro";
 
 import siczImg from "../assets/projects/sicz/sicz.png";
+import ulamaFg from "../assets/projects/ulama/featureGraphic.png";
 ---
 
 <!doctype html>
@@ -144,6 +145,56 @@ import siczImg from "../assets/projects/sicz/sicz.png";
                 </div>
                 <a
                   href="/details/sicz"
+                  class="card-link"
+                  data-i18n="home.projects.readMore">Leer más</a
+                >
+              </div>
+
+              <!-- Card 3: Ulama -->
+              <div class="card">
+                <div class="card-image-container">
+                  <Image
+                    src={ulamaFg}
+                    alt="Ulama - World Cup 2026"
+                    loading="eager"
+                    style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px 8px 0 0; opacity: 0.8;"
+                  />
+                </div>
+                <div class="card-title" data-i18n="projects.card.ulama.title">
+                  Ulama - World Cup 2026
+                </div>
+                <div
+                  class="chips-container"
+                  style="margin-top: -4px; margin-bottom: 12px;"
+                >
+                  <div
+                    class="single-chip small-chip"
+                    style="display: flex; align-items: center; gap: 4px;"
+                  >
+                    <Icon name="lucide:code-2" size={12} />
+                    <span>Kotlin</span>
+                  </div>
+                  <div
+                    class="single-chip small-chip"
+                    style="display: flex; align-items: center; gap: 4px;"
+                  >
+                    <Icon name="lucide:layout" size={12} />
+                    <span>Jetpack Compose</span>
+                  </div>
+                  <div
+                    class="single-chip small-chip"
+                    style="display: flex; align-items: center; gap: 4px;"
+                  >
+                    <Icon name="lucide:smartphone" size={12} />
+                    <span>Android</span>
+                  </div>
+                </div>
+                <div class="card-desc" data-i18n="projects.card.ulama.desc">
+                  Android app to follow the 2026 World Cup: fixtures, live
+                  scores, group standings and match predictions.
+                </div>
+                <a
+                  href="/details/ulama"
                   class="card-link"
                   data-i18n="home.projects.readMore">Leer más</a
                 >
