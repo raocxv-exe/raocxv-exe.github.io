@@ -1,20 +1,21 @@
 ---
 import { Icon } from "astro-icon/components";
-import { Image } from "astro:assets";
 import Header from "../../components/Header.astro";
 import Sidebar from "../../components/Sidebar.astro";
 import FloatingControls from "../../components/FloatingControls.astro";
-import imgFg from "../../assets/projects/ulama/featureGraphic.png";
-import imgFg2 from "../../assets/projects/ulama/featureGraphic_2.png";
-import img1 from "../../assets/projects/ulama/1.jpg";
-import img2 from "../../assets/projects/ulama/2.jpg";
-import img3 from "../../assets/projects/ulama/3.jpg";
-import img4 from "../../assets/projects/ulama/4.jpg";
+
+const imgFg = "https://raw.githubusercontent.com/Ixeken-Studios/motoko-app/main/fastlane/metadata/android/en-US/images/featureGraphic.png";
+const img1 = "https://raw.githubusercontent.com/Ixeken-Studios/motoko-app/main/fastlane/metadata/android/en-US/images/phoneScreenshots/Dashboard_overview.jpg";
+const img2 = "https://raw.githubusercontent.com/Ixeken-Studios/motoko-app/main/fastlane/metadata/android/en-US/images/phoneScreenshots/Suscriptions.jpg";
+const img3 = "https://raw.githubusercontent.com/Ixeken-Studios/motoko-app/main/fastlane/metadata/android/en-US/images/phoneScreenshots/History.jpg";
+const img4 = "https://raw.githubusercontent.com/Ixeken-Studios/motoko-app/main/fastlane/metadata/android/en-US/images/phoneScreenshots/BarChart.jpg";
+const img5 = "https://raw.githubusercontent.com/Ixeken-Studios/motoko-app/main/fastlane/metadata/android/en-US/images/phoneScreenshots/Settings_Overview.jpg";
+const img6 = "https://raw.githubusercontent.com/Ixeken-Studios/motoko-app/main/fastlane/metadata/android/en-US/images/phoneScreenshots/Security_Settings.jpg";
 ---
 
 <!doctype html>
 <html>
-  <Header title="Ulama | Project Details" />
+  <Header title="Motoko | Project Details" />
   <body>
     <FloatingControls />
     <div class="content">
@@ -33,21 +34,19 @@ import img4 from "../../assets/projects/ulama/4.jpg";
               <h1
                 class="project-title"
                 style="margin-bottom: 8px;"
-                data-i18n="details.ulama.title"
+                data-i18n="details.motoko.title"
               >
-                Ulama - Mundial 2026
+                Motoko - Finanzas Personales
               </h1>
               <p
                 class="lead"
                 style="margin-bottom: 16px;"
-                data-i18n="details.ulama.lead"
+                data-i18n="details.motoko.lead"
               >
-                App Android nativa para seguir el Mundial de Fútbol 2026:
-                calendario de partidos, resultados en vivo, tabla de grupos y
-                quiniela.
+                App Android nativa para la gestión de finanzas personales: ingresos, gastos, suscripciones, múltiples carteras y privacidad absoluta local.
               </p>
               <a
-                href="https://github.com/Ixeken-Studios/ulama-app"
+                href="https://github.com/Ixeken-Studios/motoko-app"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="source-link"
@@ -60,54 +59,63 @@ import img4 from "../../assets/projects/ulama/4.jpg";
 
             <div class="bento-gallery">
               <div class="gallery-item gallery-horizontal">
-                <Image
+                <img
                   src={imgFg}
-                  alt="Ulama feature graphic"
-                  class="gallery-img"
-                  loading="eager"
-                />
-              </div>
-
-              <div class="gallery-item gallery-horizontal">
-                <Image
-                  src={imgFg2}
-                  alt="Ulama feature graphic 2"
+                  alt="Motoko feature graphic"
                   class="gallery-img"
                   loading="eager"
                 />
               </div>
 
               <div class="gallery-item gallery-phone">
-                <Image
+                <img
                   src={img1}
-                  alt="Match schedule screen"
+                  alt="Dashboard Overview"
                   class="gallery-img"
                   loading="eager"
                 />
               </div>
 
               <div class="gallery-item gallery-phone">
-                <Image
+                <img
                   src={img2}
-                  alt="Group standings"
+                  alt="Subscriptions list"
                   class="gallery-img"
                   loading="eager"
                 />
               </div>
 
               <div class="gallery-item gallery-phone">
-                <Image
+                <img
                   src={img3}
-                  alt="Match predictions"
+                  alt="Transaction ledger history"
                   class="gallery-img"
                   loading="eager"
                 />
               </div>
 
               <div class="gallery-item gallery-phone">
-                <Image
+                <img
                   src={img4}
-                  alt="Favorites screen"
+                  alt="Financial analytics charts"
+                  class="gallery-img"
+                  loading="eager"
+                />
+              </div>
+
+              <div class="gallery-item gallery-phone">
+                <img
+                  src={img5}
+                  alt="Settings overview"
+                  class="gallery-img"
+                  loading="eager"
+                />
+              </div>
+
+              <div class="gallery-item gallery-phone">
+                <img
+                  src={img6}
+                  alt="App lock security settings"
                   class="gallery-img"
                   loading="eager"
                 />
@@ -120,11 +128,8 @@ import img4 from "../../assets/projects/ulama/4.jpg";
                   <Icon name="lucide:target" size={18} />
                   <span data-i18n="details.asked">¿Qué se pidió?</span>
                 </div>
-                <p data-i18n="details.ulama.asked">
-                  Se solicitó una aplicación Android que permitiera a los
-                  aficionados seguir el Mundial 2026 de forma sencilla: consultar
-                  el calendario completo, resultados en vivo, posiciones de
-                  grupos y guardar predicciones de cada partido.
+                <p data-i18n="details.motoko.asked">
+                  Se solicitó diseñar una herramienta que facilitara el control diario de gastos e ingresos sin abrumar al usuario con interfaces financieras complejas. El foco principal era asegurar la privacidad local de los datos y ofrecer una experiencia interactiva ergonómica adaptada al uso móvil con una sola mano.
                 </p>
               </div>
 
@@ -133,10 +138,8 @@ import img4 from "../../assets/projects/ulama/4.jpg";
                   <Icon name="lucide:user" size={18} />
                   <span data-i18n="details.done">¿Qué hice?</span>
                 </div>
-                <p data-i18n="details.ulama.done">
-                  Desarrollador Android. Diseñé e implementé la app completa
-                  usando Kotlin y Jetpack Compose con Material 3. Arquitectura
-                  limpia con Hilt, Room y Retrofit.
+                <p data-i18n="details.motoko.done">
+                  Diseñador UI/UX y Desarrollador. Diseñé una interfaz móvil basada en Material Design 3 con controles ergonómicos adaptables. Implementé la base de datos Room para almacenamiento local cifrado y la lógica de gestión de carteras y suscripciones.
                 </p>
               </div>
 
@@ -178,8 +181,8 @@ import img4 from "../../assets/projects/ulama/4.jpg";
                     class="single-chip small-chip"
                     style="display: flex; align-items: center; gap: 6px;"
                   >
-                    <Icon name="lucide:cloud" size={12} />
-                    <span>Retrofit</span>
+                    <Icon name="lucide:save" size={12} />
+                    <span>Preferences DataStore</span>
                   </div>
                   <div
                     class="single-chip small-chip"
@@ -192,40 +195,33 @@ import img4 from "../../assets/projects/ulama/4.jpg";
               </div>
             </div>
 
-            <section class="details-section">
+            <div class="details-section">
               <div class="section-title" data-i18n="details.analysis">
                 Análisis y Desarrollo
               </div>
               <div class="project-desc">
-                <p data-i18n="details.ulama.analysis.p1">
-                  El mayor reto fue ofrecer una experiencia fluida con datos en
-                  tiempo real. Se diseñó un flujo unidireccional de datos donde
-                  el UI reacciona a cambios en los repositorios.
+                <p data-i18n="details.motoko.analysis.p1">
+                  Desde la perspectiva de UI/UX, el mayor reto fue la visualización ergonómica de datos complejos. Introduje un selector de alineación de barra de navegación configurable para que el usuario elija la disposición más cómoda según su mano dominante. Diseñé tarjetas de suscripción muy claras que desglosan de forma comprensible el gasto mensual y anual acumulado, evitando la fatiga visual mediante amplios espacios en blanco y tipografías legibles.
                 </p>
-                <p data-i18n="details.ulama.analysis.p2">
-                  Se implementaron dos fuentes de datos: openfootball para el
-                  calendario y ESPN para resultados en vivo. El usuario puede
-                  activar notificaciones por partido y marcar equipos favoritos.
+                <p data-i18n="details.motoko.analysis.p2">
+                  En cuanto a la interacción, implementé gestos intuitivos como el deslizamiento lateral (swipe-to-delete) en la lista de transacciones con retroalimentación instantánea de deshacer (undo). Para la arquitectura del sistema, apliqué un patrón MVVM offline-first, donde la información financiera y las preferencias estéticas se guardan localmente mediante Room y Preferences DataStore, garantizando una privacidad del 100%.
                 </p>
               </div>
-            </section>
+            </div>
 
-            <section class="details-section">
+            <div class="details-section">
               <div class="section-title" data-i18n="details.results">
                 Resultados y Aprendizaje
               </div>
               <div class="project-desc">
-                <p data-i18n="details.ulama.results.p1">
-                  La app se publicó en GitHub bajo licencia MIT y está
-                  disponible para dispositivos Android 14+.
+                <p data-i18n="details.motoko.results.p1">
+                  La interfaz de Motoko destaca por su fluidez y personalización. El usuario puede alternar entre 5 tamaños de texto y modificar la tipografía principal, adaptándose a diversas necesidades de accesibilidad visual. Los flujos de entrada de transacciones se redujeron a pantallas minimalistas de pocos pasos, reduciendo la fricción usual de las aplicaciones de finanzas.
                 </p>
-                <p data-i18n="details.ulama.results.p2">
-                  Ulama demostró que es posible construir una app completa para
-                  un evento global usando las mejores prácticas de Android
-                  moderno.
+                <p data-i18n="details.motoko.results.p2">
+                  Este proyecto consolidó la importancia de la microinteracción y la accesibilidad móvil en el diseño de software. Logré demostrar que las herramientas financieras pueden ser visualmente hermosas y placenteras de usar a diario.
                 </p>
               </div>
-            </section>
+            </div>
           </div>
         </div>
       </nav>
@@ -302,12 +298,11 @@ import img4 from "../../assets/projects/ulama/4.jpg";
       .source-link:hover {
         border-color: #555;
         color: #fff;
-        background: rgba(255,255,255,0.05);
+        background: rgba(255, 255, 255, 0.05);
       }
-
       .bento-gallery {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         grid-auto-rows: auto;
         gap: 16px;
         margin: 0 auto 64px;
@@ -329,7 +324,7 @@ import img4 from "../../assets/projects/ulama/4.jpg";
       }
 
       .gallery-horizontal {
-        grid-column: span 2;
+        grid-column: span 3;
       }
 
       .gallery-phone {
@@ -398,11 +393,20 @@ import img4 from "../../assets/projects/ulama/4.jpg";
         .bento-gallery {
           grid-template-columns: repeat(2, 1fr);
         }
+        .gallery-horizontal {
+          grid-column: span 2 !important;
+        }
+        .gallery-phone {
+          grid-column: span 1 !important;
+        }
       }
 
       @media (max-width: 500px) {
         .bento-gallery {
           grid-template-columns: 1fr;
+        }
+        .gallery-horizontal, .gallery-phone {
+          grid-column: span 1 !important;
         }
       }
 
@@ -441,7 +445,7 @@ import img4 from "../../assets/projects/ulama/4.jpg";
       :global(html.light-mode) .source-link:hover {
         border-color: #bbb;
         color: #111;
-        background: rgba(0,0,0,0.03);
+        background: rgba(0, 0, 0, 0.03);
       }
     </style>
   </body>

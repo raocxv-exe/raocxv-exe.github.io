@@ -143,6 +143,10 @@ export const translations = {
     'projects.card.sicz.desc': 'Sistema para el Instituto Zacatecano de Cultura enfocado en la preservación y modernización de datos culturales. Optimizado para hardware de bajos recursos y máxima accesibilidad.',
     'projects.card.ulama.title': 'Ulama - Mundial 2026',
     'projects.card.ulama.desc': 'App Android para seguir el Mundial 2026: calendario, resultados en vivo, tabla de grupos y quiniela. Construida con Kotlin y Jetpack Compose.',
+    'projects.card.motoko.title': 'Motoko - Gestor Financiero',
+    'projects.card.motoko.desc': 'Gestor de finanzas personales para Android. Diseñado para un control ergonómico, seguimiento de suscripciones y privacidad local absoluta.',
+    'projects.card.nepo.title': 'Nepo - Calculadora Modular',
+    'projects.card.nepo.desc': 'Calculadora modular y convertidor con un motor estético de temas dinámicos en JSON, tipografías personalizadas y glassmorphism en tiempo real.',
     
     'projects.archive.satca.title': 'SATCA UAZ',
     'projects.archive.satca.d1': 'Sistema web CRUD integral para la gestión de oferta académica y créditos universitarios.',
@@ -207,7 +211,27 @@ export const translations = {
     'details.ulama.analysis.p2': 'La app es offline-first: Room como base de datos local cachea los fixtures y las predicciones, permitiendo que todo funcione sin internet y se sincronice cuando haya conexión. Los colores los escogí de la cancha de fútbol: el verde pasto y el blanco de la pintura. El logo combina el aro del juego de pelota maya (ulama) con una pelota de hule al centro, conectando el deporte moderno con sus raíces mesoamericanas en honor al país anfitrión México. La app usa dos fuentes de datos: openfootball para el calendario y ESPN para resultados en vivo.',
     'details.ulama.results.p1': 'El usuario puede activar notificaciones por partido, ajustar el tiempo de alerta previa y marcar equipos favoritos para recibir recordatorios automáticos. La quiniela tiene retroalimentación visual con verde para aciertos y rojo para fallos.',
     'details.ulama.results.p2': 'La gran lección fue que al tener una identidad de diseño tan marcada —tipografía limpia, tarjetas definidas, paleta verde y blanca— agregar nuevas pantallas y funcionalidades fue sumamente fácil. La app se publicó en GitHub bajo licencia MIT y está disponible para Android 14+.',
-    
+
+    // Motoko Details
+    'details.motoko.title': 'Motoko - Finanzas Personales',
+    'details.motoko.lead': 'App Android nativa para la gestión de finanzas personales. Enfocada en ofrecer una interfaz táctil ergonómica, control de suscripciones y privacidad absoluta local.',
+    'details.motoko.asked': 'Se solicitó diseñar una herramienta que facilitara el control diario de gastos e ingresos sin abrumar al usuario con interfaces financieras complejas. El foco principal era asegurar la privacidad local de los datos y ofrecer una experiencia interactiva ergonómica adaptada al uso móvil con una sola mano.',
+    'details.motoko.done': 'Diseñador UI/UX y Desarrollador. Diseñé una interfaz móvil basada en Material Design 3 con controles ergonómicos adaptables. Implementé la base de datos Room para almacenamiento local cifrado y la lógica de gestión de carteras y suscripciones.',
+    'details.motoko.analysis.p1': 'Desde la perspectiva de UI/UX, el mayor reto fue la visualización ergonómica de datos complejos. Introduje un selector de alineación de barra de navegación configurable para que el usuario elija la disposición más cómoda según su mano dominante. Diseñé tarjetas de suscripción muy claras que desglosan de forma comprensible el gasto mensual y anual acumulado, evitando la fatiga visual mediante amplios espacios en blanco y tipografías legibles.',
+    'details.motoko.analysis.p2': 'En cuanto a la interacción, implementé gestos intuitivos como el deslizamiento lateral (swipe-to-delete) en la lista de transacciones con retroalimentación instantánea de deshacer (undo). Para la arquitectura del sistema, apliqué un patrón MVVM offline-first, donde la información financiera y las preferencias estéticas se guardan localmente mediante Room y Preferences DataStore, garantizando una privacidad del 100%.',
+    'details.motoko.results.p1': 'La interfaz de Motoko destaca por su fluidez y personalización. El usuario puede alternar entre 5 tamaños de texto y modificar la tipografía principal, adaptándose a diversas necesidades de accesibilidad visual. Los flujos de entrada de transacciones se redujeron a pantallas minimalistas de pocos pasos, reduciendo la fricción usual de las aplicaciones de finanzas.',
+    'details.motoko.results.p2': 'Este proyecto consolidó la importancia de la microinteracción y la accesibilidad móvil en el diseño de software. Logré demostrar que las herramientas financieras pueden ser visualmente hermosas y placenteras de usar a diario.',
+
+    // Nepo Details
+    'details.nepo.title': 'Nepo - Calculadora Modular',
+    'details.nepo.lead': 'Aplicación Android modular para cálculo matemático, operaciones científicas y conversión de unidades, con un motor de temas dinámicos basado en JSON.',
+    'details.nepo.asked': 'El reto consistía en rediseñar la experiencia típica de una calculadora científica, convirtiéndola en una aplicación altamente interactiva, visualmente atractiva y con alta capacidad de personalización sin comprometer la velocidad de cálculo o la legibilidad de fórmulas.',
+    'details.nepo.done': 'Diseñador UI/UX y Desarrollador. Creé la identidad visual y la interfaz fluida con soporte para transiciones animadas y glassmorphism. Desarrollé el motor de temas dinámicos en tiempo real y la arquitectura multi-módulo.',
+    'details.nepo.analysis.p1': 'El diseño de Nepo gira en torno a la personalización emocional. Implementé un motor de temas dinámicos que permite importar archivos JSON para cambiar por completo el aspecto visual (colores de botones, bordes, fondos de cristal) al vuelo. Mediante la librería Haze, integré efectos reales de desenfoque de fondo (backdrop blur) para lograr una estética premium de glassmorphism que responde al desplazamiento.',
+    'details.nepo.analysis.p2': 'Para facilitar la lectura matemática en pantallas móviles, diseñé un teclado dinámico adaptable que cambia de distribución básica en vertical a una científica completa en horizontal, acomodando 15 operadores avanzados de forma limpia. El motor matemático se aisló en un módulo específico para mantener la coherencia del diseño separada del cálculo lógico.',
+    'details.nepo.results.p1': 'La experiencia visual de Nepo es fluida y no invasiva. El usuario puede cargar 14 fuentes premium de Google Fonts y temas preconfigurados sin interrumpir sus operaciones en curso. El historial persistente se despliega a través de una hoja inferior que mantiene el estilo visual del tema actual, ofreciendo coherencia en todo momento.',
+    'details.nepo.results.p2': 'La combinación de modularidad y personalización dinámica demostró que una herramienta utilitaria cotidiana puede transformarse en una experiencia digital placentera y estéticamente superior mediante el uso creativo de las tecnologías nativas de Android.',
+
     // Devii Details
     'details.devii.title': 'Devii - Mobile App',
     'details.devii.lead': 'Aplicación móvil de journaling y gamificación diseñada para apoyar a personas con trastornos alimenticios.',
@@ -363,6 +387,10 @@ export const translations = {
     'projects.card.sicz.desc': 'System for the Zacatecas Cultural Institute focused on cultural data preservation and modernization. Optimized for low-resource hardware and maximum accessibility.',
     'projects.card.ulama.title': 'Ulama - World Cup 2026',
     'projects.card.ulama.desc': 'Android app to follow the 2026 World Cup: fixtures, live scores, group standings and match predictions. Built with Kotlin and Jetpack Compose.',
+    'projects.card.motoko.title': 'Motoko - Finance Manager',
+    'projects.card.motoko.desc': 'Personal finance manager for Android. Designed for ergonomic control, subscription tracking, and absolute local privacy.',
+    'projects.card.nepo.title': 'Nepo - Modular Calculator',
+    'projects.card.nepo.desc': 'Modular calculator and converter featuring a dynamic JSON theme engine, custom typographies, and real-time glassmorphism.',
     
     'projects.archive.satca.title': 'SATCA UAZ',
     'projects.archive.satca.d1': 'Comprehensive CRUD web system for managing academic offerings and university credits.',
@@ -427,7 +455,27 @@ export const translations = {
     'details.ulama.analysis.p2': 'The app is offline-first: Room as the local database caches fixtures and predictions, so everything works without internet and syncs when connectivity returns. The colors came from the soccer field: grass green and line white. The logo combines the Mayan ballgame ring (ulama) with a rubber ball at the center, connecting modern sport to its Mesoamerican roots in honor of host country Mexico. The app uses two data sources: openfootball for fixtures and ESPN for live scores.',
     'details.ulama.results.p1': 'Users can enable match notifications, adjust pre-match alert time and mark favorite teams for automatic reminders. The prediction system gives visual feedback with green for correct and red for wrong guesses.',
     'details.ulama.results.p2': 'The biggest lesson was that having such a strong design identity —clean typography, defined cards, green and white palette— made adding new screens and features extremely easy. The app was published on GitHub under MIT license and is available for Android 14+.',
-    
+
+    // Motoko Details
+    'details.motoko.title': 'Motoko - Personal Finance',
+    'details.motoko.lead': 'Native Android app for personal finance management. Focused on offering an ergonomic touch interface, subscription tracking, and absolute local privacy.',
+    'details.motoko.asked': 'The brief was to design a tool that simplified daily expense and income tracking without overwhelming the user with complex financial interfaces. The primary focus was on ensuring local data privacy and providing an ergonomic interactive experience optimized for one-handed mobile use.',
+    'details.motoko.done': 'UI/UX Designer and Developer. I designed a mobile interface based on Material Design 3 with adaptable ergonomic controls. I implemented Room database for secure local storage and the wallet and subscription management logic.',
+    'details.motoko.analysis.p1': 'From a UI/UX perspective, the core challenge was the ergonomic visualization of complex data. I introduced a configurable navigation bar alignment selector so users can choose the most comfortable layout based on their dominant hand. I designed clear subscription cards that present monthly and annual accumulated expenses in a readable way, preventing visual fatigue with generous white space and clean typography.',
+    'details.motoko.analysis.p2': 'For user interactions, I implemented intuitive gestures like swipe-to-delete in the transaction list with instant undo feedback. Architecturally, I applied an offline-first MVVM pattern where financial records and aesthetic preferences are saved locally via Room and Preferences DataStore, guaranteeing 100% privacy.',
+    'details.motoko.results.p1': "Motoko's interface stands out for its fluidity and personalization. Users can choose between 5 text sizes and change the main typography, supporting different visual accessibility needs. Transaction input flows were reduced to clean, multi-step mini-screens, minimizing the usual friction found in finance apps.",
+    'details.motoko.results.p2': 'This project consolidated the value of micro-interactions and mobile accessibility in software design. It proved that utility tools can be visually stunning and satisfying to use every day.',
+
+    // Nepo Details
+    'details.nepo.title': 'Nepo - Modular Calculator',
+    'details.nepo.lead': 'Modular Android application for mathematical calculation, scientific operations, and unit conversions, with a dynamic theme engine based on JSON.',
+    'details.nepo.asked': 'The challenge was to redesign the typical experience of a scientific calculator, turning it into an interactive and visually engaging application with high customization capabilities, without compromising calculation speed or formula readability.',
+    'details.nepo.done': 'UI/UX Designer and Developer. I created the visual identity and fluid interface featuring animated transitions and glassmorphism. I developed the real-time dynamic theme engine and the multi-module architecture.',
+    'details.nepo.analysis.p1': 'Nepo\'s design revolves around emotional customization. I built a dynamic theme engine that imports JSON files to completely change the visual style (button colors, border radius, glass surfaces) on the fly. Using the Haze library, I integrated real backdrop blur effects to achieve a premium glassmorphic aesthetic that responds to scrolling.',
+    'details.nepo.analysis.p2': 'To facilitate mathematical reading on mobile screens, I designed an adaptive dynamic keyboard that switches from a basic layout in portrait to a full scientific grid in landscape, arranging 15 advanced operators cleanly. The math engine is isolated in its own module to keep the design and logic layers decoupled.',
+    'details.nepo.results.p1': 'Nepo\'s visual experience is seamless and non-intrusive. Users can load 14 premium Google Fonts and pre-packaged themes without interrupting their current operations. The persistent history is displayed via a bottom sheet that inherits the current theme properties, maintaining visual coherence.',
+    'details.nepo.results.p2': 'The combination of modularity and dynamic personalization proved that a daily utility tool can be transformed into a pleasing and aesthetically superior digital experience through the creative use of native Android technologies.',
+
     // Devii Details
     'details.devii.title': 'Devii - Mobile App',
     'details.devii.lead': 'Mobile journaling and gamification app designed to support individuals with eating disorders.',

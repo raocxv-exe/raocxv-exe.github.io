@@ -74,19 +74,24 @@ const projects = [
                 >
                 <div class="carousel-container" style="width: 100%;">
                   <div class="carousel-track" id="highlight-track">
-                    <!-- Card 1: Devii -->
+                    <!-- Card 1: Motoko -->
                     <div class="card">
                       <div
                         class="card-image-container"
                         style="height: 140px; min-height: 140px; background: transparent; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;"
                       >
-                        <Icon name="lucide:paw-print" size={64} style="opacity: 0.8;" />
+                        <img
+                          src="https://raw.githubusercontent.com/Ixeken-Studios/motoko-app/main/fastlane/metadata/android/en-US/images/featureGraphic.png"
+                          alt="Motoko - Personal Finance"
+                          loading="eager"
+                          style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; opacity: 0.8;"
+                        />
                       </div>
                       <div
                         class="card-title"
-                        data-i18n="projects.card.devii.title"
+                        data-i18n="projects.card.motoko.title"
                       >
-                        Devii - Journaling App
+                        Motoko - Finance Manager
                       </div>
                       <div
                         class="chips-container"
@@ -97,54 +102,54 @@ const projects = [
                           style="display: flex; align-items: center; gap: 4px;"
                         >
                           <Icon name="lucide:smartphone" size={12} />
-                          Flutter
+                          Android
                         </div>
                         <div
                           class="single-chip small-chip"
                           style="display: flex; align-items: center; gap: 4px;"
                         >
-                          <Icon name="lucide:flame" size={12} />
-                          Firebase
+                          <Icon name="lucide:code-2" size={12} />
+                          Kotlin
                         </div>
                         <div
                           class="single-chip small-chip"
                           style="display: flex; align-items: center; gap: 4px;"
                         >
-                          <Icon name="lucide:check-circle" size={12} />
-                          ISO 29110
+                          <Icon name="lucide:layout" size={12} />
+                          Compose
                         </div>
                       </div>
                       <div
                         class="card-desc"
-                        data-i18n="projects.card.devii.desc"
+                        data-i18n="projects.card.motoko.desc"
                       >
-                        Mobile app for individuals with eating disorders.
-                        Encourages healthy habits and emotional monitoring.
+                        Personal finance manager for Android. Designed for ergonomic control, subscription tracking, and absolute local privacy.
                       </div>
                       <a
-                        href="/details/devii"
+                        href="/details/motoko"
                         class="card-link"
                         data-i18n="projects.details">Ver detalles</a
                       >
                     </div>
-                    <!-- Card 2: SICZ -->
+
+                    <!-- Card 2: Nepo -->
                     <div class="card">
                       <div
                         class="card-image-container"
                         style="height: 140px; min-height: 140px; background: transparent; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;"
                       >
-                        <Image
-                          src={siczImg}
-                          alt="SICZ - Cultural Institute"
+                        <img
+                          src="https://raw.githubusercontent.com/Ixeken-Studios/nepo-app/main/fastlane/metadata/android/en-US/images/featureGraphic.png"
+                          alt="Nepo - Modular Calculator"
                           loading="eager"
                           style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; opacity: 0.8;"
                         />
                       </div>
                       <div
                         class="card-title"
-                        data-i18n="projects.card.sicz.title"
+                        data-i18n="projects.card.nepo.title"
                       >
-                        SICZ - Cultural Institute
+                        Nepo - Modular Calculator
                       </div>
                       <div
                         class="chips-container"
@@ -154,37 +159,37 @@ const projects = [
                           class="single-chip small-chip"
                           style="display: flex; align-items: center; gap: 4px;"
                         >
-                          <Icon name="lucide:server" size={12} />
-                          Django
+                          <Icon name="lucide:smartphone" size={12} />
+                          Android
                         </div>
                         <div
                           class="single-chip small-chip"
                           style="display: flex; align-items: center; gap: 4px;"
                         >
-                          <Icon name="lucide:layout" size={12} />
-                          Bootstrap
+                          <Icon name="lucide:code-2" size={12} />
+                          Kotlin
                         </div>
                         <div
                           class="single-chip small-chip"
                           style="display: flex; align-items: center; gap: 4px;"
                         >
-                          <Icon name="lucide:users-2" size={12} />
-                          Accessibility
+                          <Icon name="lucide:palette" size={12} />
+                          JSON Themes
                         </div>
                       </div>
                       <div
                         class="card-desc"
-                        data-i18n="projects.card.sicz.desc"
+                        data-i18n="projects.card.nepo.desc"
                       >
-                        System for the Zacatecas Cultural Institute focused on
-                        data preservation and modernization.
+                        Modular calculator and converter featuring a dynamic JSON theme engine, custom typographies, and real-time glassmorphism.
                       </div>
                       <a
-                      href="/details/sicz"
-                      class="card-link"
-                      data-i18n="projects.details">Ver detalles</a
-                    >
-                  </div>
+                        href="/details/nepo"
+                        class="card-link"
+                        data-i18n="projects.details">Ver detalles</a
+                      >
+                    </div>
+
                     <!-- Card 3: Ulama -->
                     <div class="card">
                       <div
@@ -239,6 +244,119 @@ const projects = [
                       </div>
                       <a
                         href="/details/ulama"
+                        class="card-link"
+                        data-i18n="projects.details">Ver detalles</a
+                      >
+                    </div>
+
+                    <!-- Card 4: Devii -->
+                    <div class="card">
+                      <div
+                        class="card-image-container"
+                        style="height: 140px; min-height: 140px; background: transparent; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;"
+                      >
+                        <Icon name="lucide:paw-print" size={64} style="opacity: 0.8;" />
+                      </div>
+                      <div
+                        class="card-title"
+                        data-i18n="projects.card.devii.title"
+                      >
+                        Devii - Journaling App
+                      </div>
+                      <div
+                        class="chips-container"
+                        style="margin-top: -4px; margin-bottom: 12px;"
+                      >
+                        <div
+                          class="single-chip small-chip"
+                          style="display: flex; align-items: center; gap: 4px;"
+                        >
+                          <Icon name="lucide:smartphone" size={12} />
+                          Flutter
+                        </div>
+                        <div
+                          class="single-chip small-chip"
+                          style="display: flex; align-items: center; gap: 4px;"
+                        >
+                          <Icon name="lucide:flame" size={12} />
+                          Firebase
+                        </div>
+                        <div
+                          class="single-chip small-chip"
+                          style="display: flex; align-items: center; gap: 4px;"
+                        >
+                          <Icon name="lucide:check-circle" size={12} />
+                          ISO 29110
+                        </div>
+                      </div>
+                      <div
+                        class="card-desc"
+                        data-i18n="projects.card.devii.desc"
+                      >
+                        Mobile app for individuals with eating disorders.
+                        Encourages healthy habits and emotional monitoring.
+                      </div>
+                      <a
+                        href="/details/devii"
+                        class="card-link"
+                        data-i18n="projects.details">Ver detalles</a
+                      >
+                    </div>
+
+                    <!-- Card 5: SICZ -->
+                    <div class="card">
+                      <div
+                        class="card-image-container"
+                        style="height: 140px; min-height: 140px; background: transparent; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;"
+                      >
+                        <Image
+                          src={siczImg}
+                          alt="SICZ - Cultural Institute"
+                          loading="eager"
+                          style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; opacity: 0.8;"
+                        />
+                      </div>
+                      <div
+                        class="card-title"
+                        data-i18n="projects.card.sicz.title"
+                      >
+                        SICZ - Cultural Institute
+                      </div>
+                      <div
+                        class="chips-container"
+                        style="margin-top: -4px; margin-bottom: 12px;"
+                      >
+                        <div
+                          class="single-chip small-chip"
+                          style="display: flex; align-items: center; gap: 4px;"
+                        >
+                          <Icon name="lucide:server" size={12} />
+                          Django
+                        </div>
+                        <div
+                          class="single-chip small-chip"
+                          style="display: flex; align-items: center; gap: 4px;"
+                        >
+                          <Icon name="lucide:layout" size={12} />
+                          Bootstrap
+                        </div>
+                        <div
+                          class="single-chip small-chip"
+                          style="display: flex; align-items: center; gap: 4px;"
+                        >
+                          <Icon name="lucide:users-2" size={12} />
+                          Accessibility
+                        </div>
+                      </div>
+                      <div
+                        class="card-desc"
+                        data-i18n="projects.card.sicz.desc"
+                      >
+                        System for the Zacatecas Cultural Institute focused on
+                        data preservation and modernization.
+                      </div>
+                      <a
+                        href="/details/sicz"
                         class="card-link"
                         data-i18n="projects.details">Ver detalles</a
                       >
