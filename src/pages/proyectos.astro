@@ -31,6 +31,16 @@ const projects = [
     ],
     tech: ["Java", "NeoForge", "Gradle"],
   },
+  {
+    key: "projects.archive.nocreativemenu",
+    title: "No Creative Menu",
+    desc: [
+      "Lightweight client-side optimization mod for Minecraft that allows disabling the vanilla creative inventory.",
+      "Eliminates performance overhead and lag spikes from rendering thousands of items in large modpacks.",
+      "Features an integrated inventory toggle button with 8 configurable corner presets for compatibility with other mods.",
+    ],
+    tech: ["Java", "NeoForge", "Fabric", "Gradle"],
+  },
 ];
 ---
 
@@ -249,7 +259,65 @@ const projects = [
                       >
                     </div>
 
-                    <!-- Card 4: Devii -->
+                    <!-- Card 4: Gakuu -->
+                    <div class="card">
+                      <div
+                        class="card-image-container"
+                        style="height: 140px; min-height: 140px; background: transparent; display: flex; align-items: center; justify-content: center; margin-bottom: 16px;"
+                      >
+                        <img
+                          src="https://raw.githubusercontent.com/Ixeken-Studios/gakuu-app/main/fastlane/metadata/android/en-US/images/featureGraphic.png"
+                          alt="Gakuu"
+                          loading="eager"
+                          style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; opacity: 0.8;"
+                        />
+                      </div>
+                      <div
+                        class="card-title"
+                        data-i18n="projects.card.gakuu.title"
+                      >
+                        Gakuu
+                      </div>
+                      <div
+                        class="chips-container"
+                        style="margin-top: -4px; margin-bottom: 12px;"
+                      >
+                        <div
+                          class="single-chip small-chip"
+                          style="display: flex; align-items: center; gap: 4px;"
+                        >
+                          <Icon name="lucide:smartphone" size={12} />
+                          Flutter
+                        </div>
+                        <div
+                          class="single-chip small-chip"
+                          style="display: flex; align-items: center; gap: 4px;"
+                        >
+                          <Icon name="lucide:code-2" size={12} />
+                          Dart
+                        </div>
+                        <div
+                          class="single-chip small-chip"
+                          style="display: flex; align-items: center; gap: 4px;"
+                        >
+                          <Icon name="lucide:palette" size={12} />
+                          Material 3
+                        </div>
+                      </div>
+                      <div
+                        class="card-desc"
+                        data-i18n="projects.card.gakuu.desc"
+                      >
+                        Interactive wallpaper app featuring a carousel for your own photos, an exclusive library of animated designs, and visual customization.
+                      </div>
+                      <a
+                        href="/details/gakuu"
+                        class="card-link"
+                        data-i18n="projects.details">Ver detalles</a
+                      >
+                    </div>
+
+                    <!-- Card 5: Devii -->
                     <div class="card">
                       <div
                         class="card-image-container"
@@ -303,7 +371,7 @@ const projects = [
                       >
                     </div>
 
-                    <!-- Card 5: SICZ -->
+                    <!-- Card 6: SICZ -->
                     <div class="card">
                       <div
                         class="card-image-container"

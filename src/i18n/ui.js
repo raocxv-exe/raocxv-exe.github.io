@@ -147,6 +147,8 @@ export const translations = {
     'projects.card.motoko.desc': 'Gestor de finanzas personales para Android. Diseñado para un control ergonómico, seguimiento de suscripciones y privacidad local absoluta.',
     'projects.card.nepo.title': 'Nepo - Calculadora Modular',
     'projects.card.nepo.desc': 'Calculadora modular y convertidor con un motor estético de temas dinámicos en JSON, tipografías personalizadas y glassmorphism en tiempo real.',
+    'projects.card.gakuu.title': 'Gakuu',
+    'projects.card.gakuu.desc': 'Aplicación de fondos de pantalla interactivos con carrusel para fotos propias, librería de diseños animados y personalización visual.',
     
     'projects.archive.satca.title': 'SATCA UAZ',
     'projects.archive.satca.d1': 'Sistema web CRUD integral para la gestión de oferta académica y créditos universitarios.',
@@ -157,6 +159,11 @@ export const translations = {
     'projects.archive.createhammer.d1': 'Mod de Minecraft desarrollado para NeoForge 1.21.1 que se integra con el ecosistema de "Create".',
     'projects.archive.createhammer.d2': 'Introduce el "Sturdy Hammer", una herramienta que permite prensar lingotes manualmente en un Depot.',
     'projects.archive.createhammer.d3': 'Ofrece una alternativa para la fase inicial del juego sin requerir configuraciones complejas de energía cinética.',
+    
+    'projects.archive.nocreativemenu.title': 'No Creative Menu',
+    'projects.archive.nocreativemenu.d1': 'Mod de optimización ligero del lado del cliente para Minecraft que permite ocultar el inventario creativo vanilla.',
+    'projects.archive.nocreativemenu.d2': 'Elimina caídas de rendimiento y picos de lag al evitar el renderizado innecesario de miles de ítems en modpacks grandes.',
+    'projects.archive.nocreativemenu.d3': 'Incluye un botón integrado en el inventario con 8 posiciones configurables para evitar solapamientos con otras interfaces.',
     
     // Tech labels
     'projects.tech.uiux': 'UI/UX',
@@ -231,6 +238,16 @@ export const translations = {
     'details.nepo.analysis.p2': 'Para facilitar la lectura matemática en pantallas móviles, diseñé un teclado dinámico adaptable que cambia de distribución básica en vertical a una científica completa en horizontal, acomodando 15 operadores avanzados de forma limpia. El motor matemático se aisló en un módulo específico para mantener la coherencia del diseño separada del cálculo lógico.',
     'details.nepo.results.p1': 'La experiencia visual de Nepo es fluida y no invasiva. El usuario puede cargar 14 fuentes premium de Google Fonts y temas preconfigurados sin interrumpir sus operaciones en curso. El historial persistente se despliega a través de una hoja inferior que mantiene el estilo visual del tema actual, ofreciendo coherencia en todo momento.',
     'details.nepo.results.p2': 'La combinación de modularidad y personalización dinámica demostró que una herramienta utilitaria cotidiana puede transformarse en una experiencia digital placentera y estéticamente superior mediante el uso creativo de las tecnologías nativas de Android.',
+
+    // Gakuu Details
+    'details.gakuu.title': 'Gakuu',
+    'details.gakuu.lead': 'Aplicación de wallpapers con carrusel para fotos propias y una librería de fondos interactivos creados por nosotros.',
+    'details.gakuu.asked': 'Se solicitó crear una aplicación de wallpapers que permitiera usar fotos personales y fondos animados interactivos, garantizando un rendimiento fluido en dispositivos de diferentes gamas y tamaños, sin anuncios molestos y con total privacidad local.',
+    'details.gakuu.done': 'Diseñador y Desarrollador. Diseñé la interfaz visual y la experiencia de usuario completa, además de programar la aplicación para que fuera rápida, fácil de usar y agradable en cualquier teléfono.',
+    'details.gakuu.analysis.p1': 'Buscaba una interfaz sencilla y minimalista para que los wallpapers se llevaran completamente la atención del usuario. Mi enfoque principal estuvo en el rendimiento y la adaptabilidad de la interfaz, utilizando botones grandes y controles cómodos para pantallas de distintos tamaños, además de dar total libertad al usuario para personalizar temas y fuentes.',
+    'details.gakuu.analysis.p2': 'Para el desarrollo combiné Dart y Kotlin según las responsabilidades del sistema. Utilicé Dart con Flutter para construir una interfaz fluida, reactiva y adaptable. Por otra parte, integré Kotlin para conectarme directamente con las APIs de bajo nivel de Android, implementando el servicio de fondo de pantalla en segundo plano y el motor de renderizado gráfico de alto rendimiento que Flutter no gestiona de forma nativa.',
+    'details.gakuu.results.p1': 'Fue mi primera experiencia trabajando con Flutter y me resultó muy práctico el sistema con el que gestiona los widgets. Al ser una tecnología multiplataforma, ofrece la gran ventaja de escribir el código base prácticamente una sola vez para distintos entornos.',
+    'details.gakuu.results.p2': 'El resultado final fue una interfaz minimalista que se siente fluida, directa y fácil de navegar. Demostró que una aplicación puede ser ligera, altamente personalizable y cómoda en cualquier dispositivo.',
 
     // Devii Details
     'details.devii.title': 'Devii - Mobile App',
@@ -391,6 +408,8 @@ export const translations = {
     'projects.card.motoko.desc': 'Personal finance manager for Android. Designed for ergonomic control, subscription tracking, and absolute local privacy.',
     'projects.card.nepo.title': 'Nepo - Modular Calculator',
     'projects.card.nepo.desc': 'Modular calculator and converter featuring a dynamic JSON theme engine, custom typographies, and real-time glassmorphism.',
+    'projects.card.gakuu.title': 'Gakuu',
+    'projects.card.gakuu.desc': 'Interactive wallpaper app featuring a carousel for your own photos, an exclusive library of animated designs, and visual customization.',
     
     'projects.archive.satca.title': 'SATCA UAZ',
     'projects.archive.satca.d1': 'Comprehensive CRUD web system for managing academic offerings and university credits.',
@@ -401,6 +420,11 @@ export const translations = {
     'projects.archive.createhammer.d1': 'Minecraft mod developed for NeoForge 1.21.1 that integrates with the "Create" mod ecosystem.',
     'projects.archive.createhammer.d2': 'Introduces the "Sturdy Hammer", a tool to manually press ingots into sheets on a Depot.',
     'projects.archive.createhammer.d3': 'Provides an early-game alternative for sheet production without requiring initial kinetic energy setups.',
+    
+    'projects.archive.nocreativemenu.title': 'No Creative Menu',
+    'projects.archive.nocreativemenu.d1': 'Lightweight client-side optimization mod for Minecraft that allows disabling the vanilla creative inventory.',
+    'projects.archive.nocreativemenu.d2': 'Eliminates performance overhead and lag spikes from rendering thousands of items in large modpacks.',
+    'projects.archive.nocreativemenu.d3': 'Features an integrated inventory toggle button with 8 configurable corner presets for compatibility with other mods.',
     
     // Tech labels
     'projects.tech.uiux': 'UI/UX',
@@ -475,6 +499,16 @@ export const translations = {
     'details.nepo.analysis.p2': 'To facilitate mathematical reading on mobile screens, I designed an adaptive dynamic keyboard that switches from a basic layout in portrait to a full scientific grid in landscape, arranging 15 advanced operators cleanly. The math engine is isolated in its own module to keep the design and logic layers decoupled.',
     'details.nepo.results.p1': 'Nepo\'s visual experience is seamless and non-intrusive. Users can load 14 premium Google Fonts and pre-packaged themes without interrupting their current operations. The persistent history is displayed via a bottom sheet that inherits the current theme properties, maintaining visual coherence.',
     'details.nepo.results.p2': 'The combination of modularity and dynamic personalization proved that a daily utility tool can be transformed into a pleasing and aesthetically superior digital experience through the creative use of native Android technologies.',
+
+    // Gakuu Details
+    'details.gakuu.title': 'Gakuu',
+    'details.gakuu.lead': 'Wallpaper application featuring a carousel for your own photos and a library of interactive wallpapers created by us.',
+    'details.gakuu.asked': 'The goal was to build a wallpaper application allowing users to display personal photos and interactive animated backgrounds, ensuring smooth performance across devices of different specs and sizes, completely ad-free and with total local privacy.',
+    'details.gakuu.done': 'Designer and Developer. I designed the entire visual interface and user experience, and developed the application to make it fast, intuitive, and enjoyable on any phone.',
+    'details.gakuu.analysis.p1': 'I aimed for a simple, minimalist interface where the wallpapers take center stage. My primary focus was performance and layout adaptability, using large buttons and comfortable controls for screens of various sizes, along with full user freedom to customize themes and fonts.',
+    'details.gakuu.analysis.p2': 'For development, I combined Dart and Kotlin based on system responsibilities. I used Dart with Flutter to build a fluid, reactive, and adaptable interface. Meanwhile, I integrated Kotlin to interface directly with low-level Android APIs, implementing the background live wallpaper service and high-performance graphics rendering pipeline that Flutter does not handle natively.',
+    'details.gakuu.results.p1': 'This was my first experience working with Flutter and I found its widget system very practical. Being a multiplatform technology, it offers the clear advantage of writing the core codebase essentially once for different platforms.',
+    'details.gakuu.results.p2': 'The final result was a minimalist interface that feels fluid, responsive, and easy to navigate. It demonstrated that an app can be lightweight, highly customizable, and comfortable on any device.',
 
     // Devii Details
     'details.devii.title': 'Devii - Mobile App',
