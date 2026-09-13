@@ -1,0 +1,551 @@
+---
+import type { ImageMetadata } from "astro";
+
+interface CarouselObject {
+  src: string | ImageMetadata;
+  alt?: string;
+  title?: string;
+}
+
+type CarouselInput = string | ImageMetadata | CarouselObject;
+
+interface Props {
+  items: CarouselInput[];
+  id?: string;
+  thumbAspect?: "portrait" | "landscape";
+}
+
+const { items = [], id = "spotlight-carousel", thumbAspect = "portrait" } = Astro.props;
+
+const normalizedItems = items.map((item, idx) => {
+  if (typeof item === "string") {
+    return { src: item, alt: `Slide ${idx + 1}` };
+  }
+  if (typeof item === "object" && item !== null) {
+    if ("src" in item) {
+      const rawSrc = item.src;
+      const srcVal = typeof rawSrc === "string" ? rawSrc : rawSrc.src;
+      return { src: srcVal, alt: item.alt || `Slide ${idx + 1}` };
+    }
+    if ("format" in item && "width" in item) {
+      return { src: (item as ImageMetadata).src, alt: `Slide ${idx + 1}` };
+    }
+  }
+  return { src: "", alt: "" };
+});
+---
+
+<div class={`spotlight-carousel ${thumbAspect === "landscape" ? "is-landscape" : "is-portrait"}`} id={id}>
+  <!-- Barra superior exterior para no obstruir las capturas -->
+  <div class="spotlight-header">
+    <div class="spotlight-counter">
+      <span class="counter-label" data-i18n="carousel.counter.label">Captura</span>
+      <span class="current-index">1</span>
+      <span class="counter-divider">/</span>
+      <span class="total-count">{normalizedItems.length}</span>
+    </div>
+    <div class="spotlight-hint">
+      <span data-i18n="carousel.expand">Toca para ampliar</span>
+    </div>
+  </div>
+
+  <div class="spotlight-stage">
+    <button class="spotlight-nav prev" type="button" aria-label="Foto anterior">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"></path>
+      </svg>
+    </button>
+
+    <div class="spotlight-frame" tabindex="0" role="button" aria-label="Abrir imagen en pantalla completa">
+      <img
+        src={normalizedItems[0]?.src}
+        alt={normalizedItems[0]?.alt || "Captura del proyecto"}
+        class="spotlight-main-img"
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+
+    <button class="spotlight-nav next" type="button" aria-label="Foto siguiente">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m9 18 6-6-6-6"></path>
+      </svg>
+    </button>
+  </div>
+
+  <div class="spotlight-thumbs" role="tablist" aria-label="Miniaturas de capturas">
+    {
+      normalizedItems.map((item, index) => (
+        <button
+          type="button"
+          class={`spotlight-thumb ${index === 0 ? "is-active" : ""}`}
+          data-index={index}
+          role="tab"
+          aria-selected={index === 0 ? "true" : "false"}
+          aria-label={`Ver foto ${index + 1}`}
+        >
+          <img src={item.src} alt={item.alt || ""} loading="lazy" decoding="async" />
+        </button>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  interface SlideData {
+    src: string;
+    alt: string;
+  }
+
+  function setupSpotlightCarousels() {
+    const carousels = document.querySelectorAll<HTMLElement>(".spotlight-carousel");
+
+    carousels.forEach((carousel) => {
+      if (carousel.dataset.initialized === "true") return;
+      carousel.dataset.initialized = "true";
+
+      const mainImg = carousel.querySelector<HTMLImageElement>(".spotlight-main-img");
+      const frame = carousel.querySelector<HTMLElement>("..spotlight-frame".replace("..", "."));
+      const counterCurrent = carousel.querySelector<HTMLElement>(".current-index");
+      const btnPrev = carousel.querySelector<HTMLButtonElement>(".spotlight-nav.prev");
+      const btnNext = carousel.querySelector<HTMLButtonElement>(".spotlight-nav.next");
+      const thumbs = Array.from(carousel.querySelectorAll<HTMLButtonElement>(".spotlight-thumb"));
+
+      if (!mainImg || thumbs.length === 0) return;
+
+      const slides: SlideData[] = thumbs.map((thumb) => {
+        const img = thumb.querySelector<HTMLImageElement>("img");
+        return {
+          src: img?.src || "",
+          alt: img?.alt || "",
+        };
+      });
+
+      let activeIndex = 0;
+      let isTransitioning = false;
+
+      function goToSlide(index: number) {
+        if (isTransitioning || index === activeIndex) return;
+        const total = slides.length;
+        activeIndex = ((index % total) + total) % total;
+
+        isTransitioning = true;
+        mainImg.style.opacity = "0";
+
+        setTimeout(() => {
+          mainImg.src = slides[activeIndex].src;
+          mainImg.alt = slides[activeIndex].alt;
+          mainImg.style.opacity = "1";
+          isTransitioning = false;
+        }, 140);
+
+        if (counterCurrent) {
+          counterCurrent.textContent = String(activeIndex + 1);
+        }
+
+        thumbs.forEach((thumb, i) => {
+          const isActive = i === activeIndex;
+          thumb.classList.toggle("is-active", isActive);
+          thumb.setAttribute("aria-selected", isActive ? "true" : "false");
+          if (isActive) {
+            thumb.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+          }
+        });
+      }
+
+      function nextSlide() {
+        goToSlide(activeIndex + 1);
+      }
+
+      function prevSlide() {
+        goToSlide(activeIndex - 1);
+      }
+
+      btnPrev?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        prevSlide();
+      });
+
+      btnNext?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        nextSlide();
+      });
+
+      thumbs.forEach((thumb) => {
+        thumb.addEventListener("click", () => {
+          const idx = parseInt(thumb.dataset.index || "0", 10);
+          goToSlide(idx);
+        });
+      });
+
+      // Gestos tactiles para telefonos moviles
+      let touchStartX = 0;
+      let touchStartY = 0;
+      let touchDeltaX = 0;
+      let touchDeltaY = 0;
+      let isSwiping = false;
+
+      frame?.addEventListener(
+        "touchstart",
+        (e) => {
+          touchStartX = e.touches[0].clientX;
+          touchStartY = e.touches[0].clientY;
+          touchDeltaX = 0;
+          touchDeltaY = 0;
+          isSwiping = false;
+        },
+        { passive: true }
+      );
+
+      frame?.addEventListener(
+        "touchmove",
+        (e) => {
+          touchDeltaX = e.touches[0].clientX - touchStartX;
+          touchDeltaY = e.touches[0].clientY - touchStartY;
+          if (Math.abs(touchDeltaX) > 12 || Math.abs(touchDeltaY) > 12) {
+            isSwiping = true;
+          }
+        },
+        { passive: true }
+      );
+
+      frame?.addEventListener(
+        "touchend",
+        () => {
+          if (Math.abs(touchDeltaX) > Math.abs(touchDeltaY) && Math.abs(touchDeltaX) > 35) {
+            if (touchDeltaX < 0) {
+              nextSlide();
+            } else {
+              prevSlide();
+            }
+          }
+          setTimeout(() => {
+            isSwiping = false;
+          }, 60);
+        },
+        { passive: true }
+      );
+
+      // Apertura de modal con clic simple
+      frame?.addEventListener("click", () => {
+        if (isSwiping) return;
+        const modal = document.getElementById("image-modal");
+        const modalImg = modal?.querySelector<HTMLImageElement>(".image-modal-content");
+        if (modal && modalImg && mainImg.src) {
+          modal.style.display = "flex";
+          document.body.classList.add("modal-open");
+          setTimeout(() => modal.classList.add("show"), 10);
+          modalImg.src = mainImg.src;
+          modalImg.alt = mainImg.alt;
+        }
+      });
+
+      // Navegacion con teclado
+      frame?.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") {
+          e.preventDefault();
+          prevSlide();
+        } else if (e.key === "ArrowRight") {
+          e.preventDefault();
+          nextSlide();
+        } else if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          frame.click();
+        }
+      });
+
+      const cleanup = () => {
+        btnPrev?.removeEventListener("click", prevSlide);
+        btnNext?.removeEventListener("click", nextSlide);
+      };
+      document.addEventListener("astro:before-swap", cleanup, { once: true });
+    });
+  }
+
+  document.addEventListener("astro:page-load", setupSpotlightCarousels);
+</script>
+
+<style>
+  .spotlight-carousel {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 56px;
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  .spotlight-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding: 0 4px;
+    gap: 12px;
+  }
+
+  .spotlight-counter {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(26, 26, 26, 0.7);
+    border: 1px solid #353535;
+    border-radius: 20px;
+    padding: 5px 14px;
+    color: #a8a8a8;
+    font-size: 12px;
+    font-family: monospace;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .spotlight-counter .current-index {
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .spotlight-counter .counter-divider {
+    opacity: 0.4;
+  }
+
+  .spotlight-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #777;
+    font-size: 12px;
+    user-select: none;
+  }
+
+  .spotlight-stage {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: rgba(20, 20, 20, 0.6);
+    border: 1px solid #353535;
+    border-radius: 20px;
+    padding: 24px 16px;
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+  }
+
+  .spotlight-frame {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: clamp(340px, 52vh, 480px);
+    max-width: 100%;
+    cursor: pointer;
+    outline: none;
+    border-radius: 14px;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+  }
+
+  .spotlight-frame:hover {
+    transform: scale(1.01);
+  }
+
+  .spotlight-main-img {
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+    transition: opacity 0.18s cubic-bezier(0.2, 0, 0, 1);
+    user-select: none;
+    -webkit-user-drag: none;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+
+  .spotlight-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(25, 25, 25, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  }
+
+  .spotlight-nav:hover {
+    background: rgba(45, 45, 45, 0.95);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-50%) scale(1.08);
+  }
+
+  .spotlight-nav.prev {
+    left: 16px;
+  }
+
+  .spotlight-nav.next {
+    right: 16px;
+  }
+
+  .spotlight-thumbs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 16px auto 0;
+    max-width: 100%;
+    width: fit-content;
+    overflow-x: auto;
+    padding: 6px 4px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .spotlight-thumbs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .spotlight-thumb {
+    position: relative;
+    width: 52px;
+    height: 84px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #111;
+    border: 1px solid #353535;
+    opacity: 0.45;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.25s cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  .spotlight-carousel.is-landscape .spotlight-thumb {
+    width: 88px;
+    height: 56px;
+    border-radius: 8px;
+  }
+
+  .spotlight-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+  }
+
+  .spotlight-thumb:hover {
+    opacity: 0.8;
+    border-color: #666;
+  }
+
+  .spotlight-thumb.is-active {
+    opacity: 1;
+    border-color: #3b82f6;
+    box-shadow: 0 0 16px rgba(59, 130, 246, 0.45);
+    transform: translateY(-2px) scale(1.05);
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  :global(html.light-mode) .spotlight-counter {
+    background: rgba(240, 240, 240, 0.9);
+    border-color: #ddd;
+    color: #666;
+  }
+
+  :global(html.light-mode) .spotlight-counter .current-index {
+    color: #111;
+  }
+
+  :global(html.light-mode) .spotlight-hint {
+    color: #888;
+  }
+
+  :global(html.light-mode) .spotlight-stage {
+    background: rgba(245, 245, 245, 0.8);
+    border-color: #ddd;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
+  }
+
+  :global(html.light-mode) .spotlight-nav {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(0, 0, 0, 0.15);
+    color: #111;
+  }
+
+  :global(html.light-mode) .spotlight-nav:hover {
+    background: #fff;
+    border-color: rgba(0, 0, 0, 0.3);
+  }
+
+  :global(html.light-mode) .spotlight-thumb {
+    background: #eee;
+    border-color: #ddd;
+  }
+
+  :global(html.light-mode) .spotlight-thumb.is-active {
+    border-color: #2563eb;
+    box-shadow: 0 0 14px rgba(37, 99, 235, 0.3);
+  }
+
+  @media (max-width: 600px) {
+    .spotlight-header {
+      margin-bottom: 8px;
+    }
+    .spotlight-counter {
+      font-size: 11px;
+      padding: 4px 10px;
+    }
+    .spotlight-hint {
+      font-size: 11px;
+    }
+    .spotlight-stage {
+      padding: 16px 8px;
+      border-radius: 16px;
+    }
+    .spotlight-frame {
+      height: 350px;
+    }
+    .spotlight-nav {
+      width: 36px;
+      height: 36px;
+    }
+    .spotlight-nav.prev {
+      left: 8px;
+    }
+    .spotlight-nav.next {
+      right: 8px;
+    }
+    .spotlight-thumb {
+      width: 44px;
+      height: 70px;
+    }
+    .spotlight-carousel.is-landscape .spotlight-thumb {
+      width: 68px;
+      height: 44px;
+    }
+    .spotlight-thumbs {
+      justify-content: flex-start;
+      gap: 8px;
+      padding: 4px 6px;
+    }
+  }
+</style>

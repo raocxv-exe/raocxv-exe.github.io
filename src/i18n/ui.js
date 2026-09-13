@@ -198,6 +198,11 @@ export const translations = {
     'details.placeholder.analysis': 'Aquí va una explicación más profunda del proceso. Cómo se abordó el problema, los desafíos técnicos encontrados y las decisiones de diseño tomadas.',
     'projects.practice.empty': 'Actualmente diseñando nuevas experiencias...',
     'details.sourceCode': 'Codigo Fuente',
+    'details.expand': 'Ampliar',
+    'carousel.counter.label': 'Captura',
+    'carousel.expand': 'Toca para ampliar',
+    'carousel.prev': 'Foto anterior',
+    'carousel.next': 'Foto siguiente',
 
     // SICZ Details
     'details.sicz.title': 'SICZ - Instituto Zacatecano de Cultura',
@@ -459,6 +464,11 @@ export const translations = {
     'details.placeholder.results': 'Final impact of the project. Achievements, client feedback, or success metrics.',
     'projects.practice.empty': 'Currently designing new experiences...',
     'details.sourceCode': 'Source Code',
+    'details.expand': 'Expand',
+    'carousel.counter.label': 'Screenshot',
+    'carousel.expand': 'Tap to expand',
+    'carousel.prev': 'Previous photo',
+    'carousel.next': 'Next photo',
 
     // SICZ Details
     'details.sicz.title': 'SICZ - Zacatecas Cultural Institute',

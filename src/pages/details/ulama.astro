@@ -4,12 +4,20 @@ import { Image } from "astro:assets";
 import Header from "../../components/Header.astro";
 import Sidebar from "../../components/Sidebar.astro";
 import FloatingControls from "../../components/FloatingControls.astro";
+import SpotlightCarousel from "../../components/SpotlightCarousel.astro";
 import imgFg from "../../assets/projects/ulama/featureGraphic.png";
 import imgFg2 from "../../assets/projects/ulama/featureGraphic_2.png";
 import img1 from "../../assets/projects/ulama/1.jpg";
 import img2 from "../../assets/projects/ulama/2.jpg";
 import img3 from "../../assets/projects/ulama/3.jpg";
 import img4 from "../../assets/projects/ulama/4.jpg";
+
+const ulamaScreenshots = [
+  { src: img1, alt: "Match schedule screen" },
+  { src: img2, alt: "Group standings" },
+  { src: img3, alt: "Match predictions" },
+  { src: img4, alt: "Favorites screen" },
+];
 ---
 
 <!doctype html>
@@ -58,61 +66,35 @@ import img4 from "../../assets/projects/ulama/4.jpg";
               </a>
             </header>
 
-            <div class="bento-gallery">
-              <div class="gallery-item gallery-horizontal">
+            <div class="feature-graphics-container">
+              <div class="feature-graphic-wrapper">
                 <Image
                   src={imgFg}
-                  alt="Ulama feature graphic"
-                  class="gallery-img"
+                  alt="Ulama Feature Graphic"
+                  class="feature-graphic-img"
                   loading="eager"
                 />
+                <div class="feature-hint">
+                  <Icon name="lucide:zoom-in" size={14} />
+                  <span data-i18n="details.expand">Ampliar</span>
+                </div>
               </div>
 
-              <div class="gallery-item gallery-horizontal">
+              <div class="feature-graphic-wrapper">
                 <Image
                   src={imgFg2}
-                  alt="Ulama feature graphic 2"
-                  class="gallery-img"
+                  alt="Ulama Feature Graphic 2"
+                  class="feature-graphic-img"
                   loading="eager"
                 />
-              </div>
-
-              <div class="gallery-item gallery-phone">
-                <Image
-                  src={img1}
-                  alt="Match schedule screen"
-                  class="gallery-img"
-                  loading="eager"
-                />
-              </div>
-
-              <div class="gallery-item gallery-phone">
-                <Image
-                  src={img2}
-                  alt="Group standings"
-                  class="gallery-img"
-                  loading="eager"
-                />
-              </div>
-
-              <div class="gallery-item gallery-phone">
-                <Image
-                  src={img3}
-                  alt="Match predictions"
-                  class="gallery-img"
-                  loading="eager"
-                />
-              </div>
-
-              <div class="gallery-item gallery-phone">
-                <Image
-                  src={img4}
-                  alt="Favorites screen"
-                  class="gallery-img"
-                  loading="eager"
-                />
+                <div class="feature-hint">
+                  <Icon name="lucide:zoom-in" size={14} />
+                  <span data-i18n="details.expand">Ampliar</span>
+                </div>
               </div>
             </div>
+
+            <SpotlightCarousel items={ulamaScreenshots} />
 
             <div class="info-grid">
               <div class="info-card">
@@ -241,24 +223,30 @@ import img4 from "../../assets/projects/ulama/4.jpg";
         const modal = document.getElementById("image-modal");
         const modalImg = modal?.querySelector(".image-modal-content");
         const closeBtn = modal?.querySelector(".close-modal");
-        const galleryItems = document.querySelectorAll(".gallery-img");
 
         if (!modal || !modalImg || !closeBtn) return;
 
-        galleryItems.forEach((item) => {
-          item.addEventListener("click", () => {
-            modal.style.display = "flex";
-            document.body.classList.add("modal-open");
-            setTimeout(() => modal.classList.add("show"), 10);
-            modalImg.src = item.src;
-            modalImg.alt = item.alt;
+        const openModal = (src, alt) => {
+          modal.style.display = "flex";
+          document.body.classList.add("modal-open");
+          setTimeout(() => modal.classList.add("show"), 10);
+          modalImg.src = src;
+          modalImg.alt = alt;
+        };
+
+        const fgs = document.querySelectorAll(".feature-graphic-img");
+        fgs.forEach((fg) => {
+          fg.addEventListener("click", () => {
+            openModal(fg.src, fg.alt);
           });
         });
 
         const closeModal = () => {
           modal.classList.remove("show");
-          document.body.classList.remove("modal-open");
-          setTimeout(() => (modal.style.display = "none"), 300);
+          setTimeout(() => {
+            modal.style.display = "none";
+            document.body.classList.remove("modal-open");
+          }, 300);
         };
 
         closeBtn.addEventListener("click", closeModal);
@@ -267,8 +255,7 @@ import img4 from "../../assets/projects/ulama/4.jpg";
         });
 
         document.addEventListener("keydown", (e) => {
-          if (e.key === "Escape" && modal.classList.contains("show"))
-            closeModal();
+          if (e.key === "Escape" && modal.classList.contains("show")) closeModal();
         });
       });
     </script>
@@ -280,7 +267,7 @@ import img4 from "../../assets/projects/ulama/4.jpg";
       }
 
       .project-header .lead {
-        margin: 0 auto;
+        margin: 0 auto 16px;
         max-width: 800px;
         color: #a8a8a8;
       }
@@ -289,71 +276,21 @@ import img4 from "../../assets/projects/ulama/4.jpg";
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        padding: 8px 18px;
+        color: #a8a8a8;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 6px 14px;
         border: 1px solid #353535;
         border-radius: 8px;
-        color: #a8a8a8;
-        font-size: 13px;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        margin-top: 4px;
+        transition: all 0.2s ease;
+        margin-bottom: 32px;
       }
-
       .source-link:hover {
         border-color: #555;
         color: #fff;
-        background: rgba(255,255,255,0.05);
+        background: rgba(255, 255, 255, 0.05);
       }
-
-      .bento-gallery {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-auto-rows: auto;
-        gap: 16px;
-        margin: 0 auto 64px;
-        max-width: 1000px;
-        width: 100%;
-        animation: fadeIn 1s ease-out;
-        align-items: start;
-      }
-
-      .gallery-item {
-        position: relative;
-        overflow: hidden;
-        border-radius: 12px;
-        background: #0d0d0d;
-        border: 1px solid #353535;
-        cursor: pointer;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        display: flex;
-      }
-
-      .gallery-horizontal {
-        grid-column: span 2;
-      }
-
-      .gallery-phone {
-        grid-column: span 1;
-      }
-
-      .gallery-item:hover {
-        transform: scale(1.02);
-        border-color: #555;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        z-index: 2;
-      }
-
-      .gallery-img {
-        width: 100%;
-        height: auto;
-        display: block;
-        transition: transform 0.6s ease;
-      }
-
-      .gallery-item:hover .gallery-img {
-        transform: scale(1.02);
-      }
-
       .info-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -394,18 +331,6 @@ import img4 from "../../assets/projects/ulama/4.jpg";
         color: #fff;
       }
 
-      @media (max-width: 991px) {
-        .bento-gallery {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-
-      @media (max-width: 500px) {
-        .bento-gallery {
-          grid-template-columns: 1fr;
-        }
-      }
-
       @keyframes fadeIn {
         from {
           opacity: 0;
@@ -417,10 +342,76 @@ import img4 from "../../assets/projects/ulama/4.jpg";
         }
       }
 
-      :global(html.light-mode) .gallery-item {
+      .feature-graphics-container {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        margin-bottom: 36px;
+      }
+
+      .feature-graphic-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto;
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid #353535;
+        background: #0d0d0d;
+        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+        cursor: pointer;
+        transition: transform 0.2s ease, border-color 0.2s ease;
+      }
+
+      .feature-graphic-wrapper:hover {
+        transform: scale(1.01);
+        border-color: #555;
+      }
+
+      .feature-graphic-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        user-select: none;
+        -webkit-user-drag: none;
+      }
+
+      .feature-hint {
+        position: absolute;
+        bottom: 12px;
+        left: 12px;
+        background: rgba(10, 10, 10, 0.75);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        color: #eee;
+        font-size: 11px;
+        padding: 4px 10px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+      }
+
+      .feature-graphic-wrapper:hover .feature-hint {
+        opacity: 1;
+      }
+
+      :global(html.light-mode) .feature-graphic-wrapper {
         background: #f5f5f5;
         border-color: #ddd;
+        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
       }
+
+      :global(html.light-mode) .feature-hint {
+        background: rgba(255, 255, 255, 0.85);
+        border-color: rgba(0, 0, 0, 0.12);
+        color: #222;
+      }
+
       :global(html.light-mode) .info-card {
         background: #fff;
         border-color: #eee;
@@ -441,7 +432,7 @@ import img4 from "../../assets/projects/ulama/4.jpg";
       :global(html.light-mode) .source-link:hover {
         border-color: #bbb;
         color: #111;
-        background: rgba(0,0,0,0.03);
+        background: rgba(0, 0, 0, 0.03);
       }
     </style>
   </body>

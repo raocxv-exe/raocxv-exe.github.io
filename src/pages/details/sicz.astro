@@ -1,9 +1,9 @@
 ---
 import { Icon } from "astro-icon/components";
-import { Image } from "astro:assets";
 import Header from "../../components/Header.astro";
 import Sidebar from "../../components/Sidebar.astro";
 import FloatingControls from "../../components/FloatingControls.astro";
+import SpotlightCarousel from "../../components/SpotlightCarousel.astro";
 import imgSicz from "../../assets/projects/sicz/sicz.png";
 import imgLogin from "../../assets/projects/sicz/login.png";
 import imgHome1 from "../../assets/projects/sicz/home1.png";
@@ -14,7 +14,17 @@ import imgForm from "../../assets/projects/sicz/creadores_form.png";
 import imgForm2 from "../../assets/projects/sicz/casas_form1.png";
 import imgHome2 from "../../assets/projects/sicz/home2.png";
 
-// SICZ Project Details Page - Bento Gallery Version
+const siczScreenshots = [
+  { src: imgSicz, alt: "SICZ Interface" },
+  { src: imgLogin, alt: "Login Interface" },
+  { src: imgHome1, alt: "Dashboard" },
+  { src: imgList, alt: "List View" },
+  { src: imgGeo, alt: "Geographic View" },
+  { src: imgDetail, alt: "Museum Detail" },
+  { src: imgForm, alt: "Creator Form" },
+  { src: imgForm2, alt: "Form Section" },
+  { src: imgHome2, alt: "Secondary View" },
+];
 ---
 
 <!doctype html>
@@ -46,7 +56,7 @@ import imgHome2 from "../../assets/projects/sicz/home2.png";
               </h1>
               <p
                 class="lead"
-                style="margin-bottom: 48px;"
+                style="margin-bottom: 32px;"
                 data-i18n="details.sicz.lead"
               >
                 Sistema enfocado en la preservación, actualización y
@@ -54,125 +64,7 @@ import imgHome2 from "../../assets/projects/sicz/home2.png";
               </p>
             </header>
 
-            <!-- Bento Gallery Grid -->
-            <div class="bento-gallery">
-              <!-- Item 1: Main View (Large) -->
-              <div
-                class="gallery-item"
-                style="grid-column: span 2; grid-row: span 2;"
-              >
-                <Image
-                  src={imgSicz}
-                  alt="SICZ Interface"
-                  class="gallery-img"
-                  loading="eager"
-                />
-              </div>
-
-              <!-- Item 2: Login (Square) -->
-              <div
-                class="gallery-item"
-                style="grid-column: span 1; grid-row: span 1;"
-              >
-                <Image
-                  src={imgLogin}
-                  alt="Login Interface"
-                  class="gallery-img"
-                  loading="eager"
-                />
-              </div>
-
-              <!-- Item 3: Dashboard (Square) -->
-              <div
-                class="gallery-item"
-                style="grid-column: span 1; grid-row: span 1;"
-              >
-                <Image
-                  src={imgHome1}
-                  alt="Dashboard"
-                  class="gallery-img"
-                  loading="eager"
-                />
-              </div>
-
-              <!-- Item 4: List View (Square) -->
-              <div
-                class="gallery-item"
-                style="grid-column: span 1; grid-row: span 1;"
-              >
-                <Image
-                  src={imgList}
-                  alt="List View"
-                  class="gallery-img"
-                  loading="eager"
-                />
-              </div>
-
-              <!-- Item 5: Geographic View (Vertical Tall) -->
-              <div
-                class="gallery-item"
-                style="grid-column: span 1; grid-row: span 2;"
-              >
-                <Image
-                  src={imgGeo}
-                  alt="Geographic View"
-                  class="gallery-img"
-                  loading="eager"
-                />
-              </div>
-
-              <!-- Item 6: Museum Detail (Wide Rectangular) -->
-              <div
-                class="gallery-item"
-                style="grid-column: span 3; grid-row: span 1;"
-              >
-                <Image
-                  src={imgDetail}
-                  alt="Museum Detail"
-                  class="gallery-img"
-                  loading="eager"
-                />
-              </div>
-
-              <!-- Item 7: Creator Form (Square) -->
-              <div
-                class="gallery-item"
-                style="grid-column: span 1; grid-row: span 1;"
-              >
-                <Image
-                  src={imgForm}
-                  alt="Creator Form"
-                  class="gallery-img"
-                  loading="eager"
-                />
-              </div>
-
-              <!-- Item 8: Form Section (Wide) -->
-              <div
-                class="gallery-item"
-                style="grid-column: span 2; grid-row: span 1;"
-              >
-                <Image
-                  src={imgForm2}
-                  alt="Form Section"
-                  class="gallery-img"
-                  loading="eager"
-                />
-              </div>
-
-              <!-- Item 9: Secondary Home (Square) -->
-              <div
-                class="gallery-item"
-                style="grid-column: span 1; grid-row: span 1;"
-              >
-                <Image
-                  src={imgHome2}
-                  alt="Secondary View"
-                  class="gallery-img"
-                  loading="eager"
-                />
-              </div>
-            </div>
+            <SpotlightCarousel items={siczScreenshots} thumbAspect="landscape" />
 
             <!-- Info Grid -->
             <div class="info-grid">
@@ -298,26 +190,16 @@ import imgHome2 from "../../assets/projects/sicz/home2.png";
     <script is:inline>
       document.addEventListener("astro:page-load", () => {
         const modal = document.getElementById("image-modal");
-        const modalImg = modal?.querySelector(".image-modal-content");
         const closeBtn = modal?.querySelector(".close-modal");
-        const galleryItems = document.querySelectorAll(".gallery-img");
 
-        if (!modal || !modalImg || !closeBtn) return;
-
-        galleryItems.forEach((item) => {
-          item.addEventListener("click", () => {
-            modal.style.display = "flex";
-            document.body.classList.add("modal-open");
-            setTimeout(() => modal.classList.add("show"), 10);
-            modalImg.src = item.src;
-            modalImg.alt = item.alt;
-          });
-        });
+        if (!modal || !closeBtn) return;
 
         const closeModal = () => {
           modal.classList.remove("show");
-          document.body.classList.remove("modal-open");
-          setTimeout(() => (modal.style.display = "none"), 300);
+          setTimeout(() => {
+            modal.style.display = "none";
+            document.body.classList.remove("modal-open");
+          }, 300);
         };
 
         closeBtn.addEventListener("click", closeModal);
@@ -326,8 +208,7 @@ import imgHome2 from "../../assets/projects/sicz/home2.png";
         });
 
         document.addEventListener("keydown", (e) => {
-          if (e.key === "Escape" && modal.classList.contains("show"))
-            closeModal();
+          if (e.key === "Escape" && modal.classList.contains("show")) closeModal();
         });
       });
     </script>
@@ -339,52 +220,11 @@ import imgHome2 from "../../assets/projects/sicz/home2.png";
       }
 
       .project-header .lead {
-        margin: 0 auto;
+        margin: 0 auto 16px;
         max-width: 800px;
         color: #a8a8a8;
       }
 
-      /* Bento Gallery Layout */
-      .bento-gallery {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-auto-rows: 140px;
-        gap: 16px;
-        margin-bottom: 64px;
-        animation: fadeIn 1s ease-out;
-      }
-
-      .gallery-item {
-        position: relative;
-        overflow: hidden;
-        border-radius: 12px;
-        background: #0d0d0d;
-        border: 1px solid #353535;
-        cursor: pointer;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        display: flex;
-      }
-
-      .gallery-item:hover {
-        transform: scale(1.02);
-        border-color: #555;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        z-index: 2;
-      }
-
-      .gallery-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        transition: transform 0.6s ease;
-      }
-
-      .gallery-item:hover .gallery-img {
-        transform: scale(1.05);
-      }
-
-      /* Info Grid & Sections */
       .info-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -425,29 +265,6 @@ import imgHome2 from "../../assets/projects/sicz/home2.png";
         color: #fff;
       }
 
-      /* Responsive Bento */
-      @media (max-width: 991px) {
-        .bento-gallery {
-          grid-template-columns: repeat(2, 1fr);
-          grid-auto-rows: 120px;
-        }
-        .gallery-item[style*="grid-column: span 3"] {
-          grid-column: span 2 !important;
-        }
-      }
-
-      @media (max-width: 500px) {
-        .bento-gallery {
-          grid-template-columns: 1fr;
-          grid-auto-rows: auto;
-        }
-        .gallery-item {
-          grid-column: span 1 !important;
-          grid-row: span 1 !important;
-          aspect-ratio: 16 / 9;
-        }
-      }
-
       @keyframes fadeIn {
         from {
           opacity: 0;
@@ -459,11 +276,6 @@ import imgHome2 from "../../assets/projects/sicz/home2.png";
         }
       }
 
-      /* Light Mode Variations */
-      :global(html.light-mode) .gallery-item {
-        background: #f5f5f5;
-        border-color: #ddd;
-      }
       :global(html.light-mode) .info-card {
         background: #fff;
         border-color: #eee;

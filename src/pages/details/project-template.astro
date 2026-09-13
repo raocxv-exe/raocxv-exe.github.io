@@ -4,10 +4,16 @@ import { Image } from "astro:assets";
 import Header from "../../components/Header.astro";
 import Sidebar from "../../components/Sidebar.astro";
 import FloatingControls from "../../components/FloatingControls.astro";
+import SpotlightCarousel from "../../components/SpotlightCarousel.astro";
 
 import imgPlaceholder from "../../assets/projects/placeholder-big.png";
 
-// This is a template page for project details using the Bento Gallery.
+const templateScreenshots = [
+  { src: imgPlaceholder, alt: "Slide 1" },
+  { src: imgPlaceholder, alt: "Slide 2" },
+  { src: imgPlaceholder, alt: "Slide 3" },
+  { src: imgPlaceholder, alt: "Slide 4" },
+];
 ---
 
 <!doctype html>
@@ -31,40 +37,25 @@ import imgPlaceholder from "../../assets/projects/placeholder-big.png";
             <!-- Header -->
             <header class="project-header">
               <h1 class="project-title" style="margin-bottom: 8px;">Nombre del Proyecto</h1>
-              <p class="lead" style="margin-bottom: 48px;">
+              <p class="lead" style="margin-bottom: 32px;">
                 Una breve descripción de una línea que resume el propósito principal del proyecto y el valor que aporta.
               </p>
             </header>
 
-            <!-- Bento Gallery Grid (Template) -->
-            <div class="bento-gallery">
-              <!-- Span 2 columns & rows for main impact -->
-              <div class="gallery-item" style="grid-column: span 2; grid-row: span 2;">
-                <Image src={imgPlaceholder} alt="Slide" class="gallery-img" loading="eager" />
-              </div>
-              
-              <div class="gallery-item" style="grid-column: span 1; grid-row: span 1;">
-                <Image src={imgPlaceholder} alt="Slide 2" class="gallery-img" loading="eager" style="filter: hue-rotate(45deg);" />
-              </div>
-              
-              <div class="gallery-item" style="grid-column: span 1; grid-row: span 1;">
-                <Image src={imgPlaceholder} alt="Slide 3" class="gallery-img" loading="eager" style="filter: hue-rotate(90deg);" />
-              </div>
-              
-              <div class="gallery-item" style="grid-column: span 1; grid-row: span 1;">
-                <Image src={imgPlaceholder} alt="Slide 4" class="gallery-img" loading="eager" style="filter: hue-rotate(135deg);" />
-              </div>
-
-              <!-- Spans 1 column but 2 rows height -->
-              <div class="gallery-item" style="grid-column: span 1; grid-row: span 2;">
-                <Image src={imgPlaceholder} alt="Slide 5" class="gallery-img" loading="eager" style="filter: hue-rotate(180deg);" />
-              </div>
-
-              <!-- Wide item -->
-              <div class="gallery-item" style="grid-column: span 3; grid-row: span 1;">
-                <Image src={imgPlaceholder} alt="Slide 6" class="gallery-img" loading="eager" style="filter: brightness(0.7);" />
+            <div class="feature-graphic-wrapper">
+              <Image
+                src={imgPlaceholder}
+                alt="Feature Graphic"
+                class="feature-graphic-img"
+                loading="eager"
+              />
+              <div class="feature-hint">
+                <Icon name="lucide:zoom-in" size={14} />
+                <span data-i18n="details.expand">Ampliar</span>
               </div>
             </div>
+
+            <SpotlightCarousel items={templateScreenshots} />
 
             <!-- Info Grid -->
             <div class="info-grid">
@@ -150,24 +141,28 @@ import imgPlaceholder from "../../assets/projects/placeholder-big.png";
         const modal = document.getElementById("image-modal");
         const modalImg = modal?.querySelector(".image-modal-content");
         const closeBtn = modal?.querySelector(".close-modal");
-        const galleryItems = document.querySelectorAll(".gallery-img");
 
         if (!modal || !modalImg || !closeBtn) return;
 
-        galleryItems.forEach(item => {
-          item.addEventListener("click", () => {
-            modal.style.display = "flex";
-            document.body.classList.add("modal-open");
-            setTimeout(() => modal.classList.add("show"), 10);
-            modalImg.src = item.src;
-            modalImg.alt = item.alt;
-          });
+        const openModal = (src, alt) => {
+          modal.style.display = "flex";
+          document.body.classList.add("modal-open");
+          setTimeout(() => modal.classList.add("show"), 10);
+          modalImg.src = src;
+          modalImg.alt = alt;
+        };
+
+        const fg = document.querySelector(".feature-graphic-img");
+        fg?.addEventListener("click", () => {
+          openModal(fg.src, fg.alt);
         });
 
         const closeModal = () => {
           modal.classList.remove("show");
-          document.body.classList.remove("modal-open");
-          setTimeout(() => (modal.style.display = "none"), 300);
+          setTimeout(() => {
+            modal.style.display = "none";
+            document.body.classList.remove("modal-open");
+          }, 300);
         };
 
         closeBtn.addEventListener("click", closeModal);
@@ -175,14 +170,9 @@ import imgPlaceholder from "../../assets/projects/placeholder-big.png";
           if (e.target === modal) closeModal();
         });
 
-        const handleKeyDown = (e) => {
+        document.addEventListener("keydown", (e) => {
           if (e.key === "Escape" && modal.classList.contains("show")) closeModal();
-        };
-        document.addEventListener("keydown", handleKeyDown);
-
-        document.addEventListener("astro:before-swap", () => {
-            document.removeEventListener("keydown", handleKeyDown);
-        }, { once: true });
+        });
       });
     </script>
 
@@ -193,50 +183,9 @@ import imgPlaceholder from "../../assets/projects/placeholder-big.png";
       }
 
       .project-header .lead {
-        margin: 0 auto;
+        margin: 0 auto 16px;
         max-width: 800px;
         color: #a8a8a8;
-      }
-
-      .bento-gallery {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-auto-rows: 140px;
-        gap: 16px;
-        margin: 0 auto 64px;
-        max-width: 1000px;
-        width: 100%;
-        animation: fadeIn 1s ease-out;
-      }
-
-      .gallery-item {
-        position: relative;
-        overflow: hidden;
-        border-radius: 12px;
-        background: #0d0d0d;
-        border: 1px solid #353535;
-        cursor: pointer;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        display: flex;
-      }
-
-      .gallery-item:hover {
-        transform: scale(1.02);
-        border-color: #555;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        z-index: 2;
-      }
-
-      .gallery-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        transition: transform 0.6s ease;
-      }
-
-      .gallery-item:hover .gallery-img {
-        transform: scale(1.05);
       }
 
       /* Info Grid & Sections */
@@ -279,39 +228,75 @@ import imgPlaceholder from "../../assets/projects/placeholder-big.png";
         color: #fff;
       }
 
-      /* Responsive Bento */
-      @media (max-width: 991px) {
-        .bento-gallery {
-          grid-template-columns: repeat(2, 1fr);
-          grid-auto-rows: 120px;
-        }
-        .gallery-item[style*="grid-column: span 3"] {
-            grid-column: span 2 !important;
-        }
-      }
-
-      @media (max-width: 500px) {
-        .bento-gallery {
-          grid-template-columns: 1fr;
-          grid-auto-rows: auto;
-        }
-        .gallery-item {
-            grid-column: span 1 !important;
-            grid-row: span 1 !important;
-            aspect-ratio: 16 / 9;
-        }
-      }
-
       @keyframes fadeIn {
         from { opacity: 0; transform: translateY(10px); }
         to { opacity: 1; transform: translateY(0); }
       }
 
+      .feature-graphic-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto 36px;
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid #353535;
+        background: #0d0d0d;
+        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+        cursor: pointer;
+        transition: transform 0.2s ease, border-color 0.2s ease;
+      }
+
+      .feature-graphic-wrapper:hover {
+        transform: scale(1.01);
+        border-color: #555;
+      }
+
+      .feature-graphic-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        user-select: none;
+        -webkit-user-drag: none;
+      }
+
+      .feature-hint {
+        position: absolute;
+        bottom: 12px;
+        left: 12px;
+        background: rgba(10, 10, 10, 0.75);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        color: #eee;
+        font-size: 11px;
+        padding: 4px 10px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+      }
+
+      .feature-graphic-wrapper:hover .feature-hint {
+        opacity: 1;
+      }
+
       /* Light Mode Variations */
-      :global(html.light-mode) .gallery-item {
+      :global(html.light-mode) .feature-graphic-wrapper {
         background: #f5f5f5;
         border-color: #ddd;
+        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
       }
+
+      :global(html.light-mode) .feature-hint {
+        background: rgba(255, 255, 255, 0.85);
+        border-color: rgba(0, 0, 0, 0.12);
+        color: #222;
+      }
+
       :global(html.light-mode) .info-card {
         background: #fff;
         border-color: #eee;
